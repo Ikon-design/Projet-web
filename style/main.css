@@ -1,0 +1,109 @@
+/*
+Class globales
+*/
+.display-flex{
+    display: flex;
+}
+
+.flex-direction-column{
+    flex-direction: column;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+h2{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+h3{
+    font-size: 1.25rem;
+}
+
+/*
+Class news
+*/
+
+.news-container{
+    height: 65vh;
+    background-color: red;
+}
+
+.left-news{
+    width: 70%;
+    background-color: blue;
+}
+
+.right-news-container{
+    width: 30%;
+}
+
+.right-news{
+    height: 50%;
+    width: 100%;
+    background-color: gold;
+}
+
+.right-news1{
+    height: 50%;
+    width: 100%;
+    background-color: blueviolet;
+}
+
+
+/*
+Class About
+ */
+
+.about{
+    height: 35vh;
+    justify-content: space-evenly;
+    background-color: aquamarine;
+}
+
+.about-container{
+    text-align: center;
+}
+
+.img-about{
+    width: 125px;
+    height: 125px;
+    border-radius: 300px;
+    object-fit: cover;
+    background-color: #ff0000;
+}
+
+/*
+Class team
+ */
+
+.team{
+    height: 100vh;
+    background-color: chartreuse;
+    justify-content: space-between;
+}
+
+.team-container{
+    height: 90%;
+}
+
+.team-item{
+    height: calc(100% / 3);
+    width: 100vw;
+    justify-content: space-between;
+}
+
+.team-item-left{
+    background-color: hotpink;
+    width: 30%;
+}
+.team-item-right{
+    background-color: teal;
+    width: 30%;
+}
+
+.team-img-left{
+    background-color: indigo;
+}
