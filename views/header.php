@@ -1,4 +1,4 @@
-<main class="display-flex header-container">
+<header class="display-flex header-container">
     <img src="src/logo.png" alt="logo of divin(DI20)" class="logoimg">
     <ul class="display-flex header-right-item">
         <li>
@@ -17,4 +17,4 @@
             <a href="/backOffices"><img src="src/profilpic.jpg" alt="profil picture of the user"></a>
         </li>
     </ul>
-</main>
+</header>

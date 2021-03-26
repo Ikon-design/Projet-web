@@ -1,6 +1,11 @@
 header {
-    display:flex;
     justify-content: space-between;
+    background-color: red;
+}
+
+header ul{
+    width: max-content;
+    background-color: red;
 }
 
 .logoimg {
@@ -9,7 +14,6 @@ header {
 
 header ul {
     list-style-type: none;
-    display: flex;
 }
 
 header ul li {
