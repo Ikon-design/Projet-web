@@ -1,0 +1,19 @@
+.characters-container{
+    width: 60vw;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.item-characters{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.img-characters{
+    width: 75px;
+    height: 75px;
+    border-radius: 12px;
+    background-color: red;
+    border: black 1px solid;
+    object-fit: cover;
+}
