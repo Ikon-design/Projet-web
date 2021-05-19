@@ -3,7 +3,7 @@
 // Connection à la bdd
 abstract class Model{
     private $host = "localhost";
-    private $db_name = "Cube";
+    private $db_name = "cubes";
     private $username = "root";
     private $password = "root";
 

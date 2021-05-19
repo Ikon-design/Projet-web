@@ -1,33 +1,61 @@
+/*-----------------
+Css pour le header
+-----------------*/
+.mobile-padding{
+    padding: 0 36px;
+}
+
 header {
     justify-content: space-between;
-    background-color: red;
+    background-color: white;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, .2);
+    position: sticky;
+    top: 0;
 }
 
-header ul{
-    width: max-content;
-    background-color: red;
-}
-
-.logoimg {
-    width:100px;
-}
-
-header ul {
-    list-style-type: none;
-}
-
-header ul li {
-    margin:0 50px;
+.logo{
+    width:33px;
 }
 
 header a {
     text-decoration: none;
-    font-size:2em;
-    font-weight: 700;
-    color:black;
+    font-family: Montserrat;
+    text-transform: uppercase;
+    font-size:1.25em;
+    font-weight: 500;
+    color:#FF8900;
 }
+.menu, .account-circle{
+    display: none;
+}
+.header-container{
+    align-items: center;
+}
+.logo{
+    margin: 10px 0;
+}
+.header-container ul li{
+    align-items: center;
+    margin: 0 15px;
+}
+/*-----------------
+media querie pour les ecrans de tablette et portable
+-----------------*/
 
-header ul li a img {
-    width:50px;
-    border-radius: 50%;
+@media screen and (max-width: 730px) {
+    .header-container{
+        align-items: center;
+    }
+    .header-right-item{
+        display: none;
+    }
+    .menu{
+        display: flex;
+    }
+    .logo{
+        margin: 13px 0;
+    }
+    .account-circle{
+        display: flex;
+    }
 }
