@@ -9,4 +9,11 @@ class Articles extends Controller {
         $getEvent = $this->Article->getEvent();
         $this->render('index', compact('getArticle', 'getEvent'));
     }
+
+    public function read($id){
+        $this->loadModel("Article");
+        $readArticle = $this->Article->readArticle($id);
+        $commentsArticle = $this->Article->commentsArticle($id);
+        $this->render('read', compact('readArticle', 'commentsArticle'));
+    }
 }

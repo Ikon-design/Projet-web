@@ -37,7 +37,7 @@ header a {
 media querie pour les ecrans de tablette et portable
 -----------------*/
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 840px) {
     .header-container{
         align-items: center;
     }
