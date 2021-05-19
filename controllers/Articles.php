@@ -5,7 +5,8 @@ class Articles extends Controller {
      * */
     public function index(){
         $this->loadModel("Article");
-        $articles = $this->Article->getAll();
-        $this->render('index', compact('articles'));
+        $getArticle = $this->Article->getArticle();
+        $getEvent = $this->Article->getEvent();
+        $this->render('index', compact('getArticle', 'getEvent'));
     }
 }

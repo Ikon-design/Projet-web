@@ -6,7 +6,7 @@
             <a href="/">Accueil</a>
         </li>
         <li class="display-flex">
-            <a href="/articles">Évènement</a>
+            <a href="/articles">Articles</a>
         </li>
         <li class="display-flex">
             <a href="/teams">L'équipe</a>

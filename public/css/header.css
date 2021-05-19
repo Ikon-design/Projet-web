@@ -1,10 +1,6 @@
 /*-----------------
 Css pour le header
 -----------------*/
-.mobile-padding{
-    padding: 0 36px;
-}
-
 header {
     justify-content: space-between;
     background-color: white;
@@ -12,15 +8,14 @@ header {
     position: sticky;
     top: 0;
 }
-
 .logo{
     width:33px;
 }
-
 header a {
     text-decoration: none;
     font-family: Montserrat;
     text-transform: uppercase;
+    letter-spacing: .5px;
     font-size:1.25em;
     font-weight: 500;
     color:#FF8900;

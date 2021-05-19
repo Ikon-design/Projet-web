@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Cube@localhost [2]" uuid="82a757b7-c063-4410-b9b5-d88a9e0528ac">
+    <data-source source="LOCAL" name="projet-web" uuid="125b66e1-31f6-42d0-81bb-97cafa5edd42">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/Cube</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/cubes</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
+      <driver-properties>
+        <property name="serverTimezone" value="UTC" />
+      </driver-properties>
     </data-source>
   </component>
 </project>

@@ -1,5 +1,6 @@
 <?php
  define("ROOT", str_replace('index.php','',$_SERVER['SCRIPT_FILENAME']));
+ date_default_timezone_set("Europe/Paris");
  include(ROOT.'app/Controller.php');
  include(ROOT.'app/Model.php');
 
