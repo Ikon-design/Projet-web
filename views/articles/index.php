@@ -7,7 +7,7 @@
         <div class='article-container display-flex flex-direction-column'>
             <div class='header-article display-flex globale-margin'>
                 <h2>Articles</h2>
-                <img src='../../public/img/menu-down.svg'>
+                <img src='public/img/menu-down.svg'>
             </div>
             <div class='divider'></div>
 "?>
@@ -23,8 +23,8 @@
         }
         echo "
             <div class='display-flex globale-margin author-article'>
-                <h3 class='article-title'>${article[Title]}</h3>
-                <h4 class='article-author'>De ${article[Pseudo]} le $formatedDate.</h4>
+                <h3 class='article-title'>${article['Title']}</h3>
+                <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>
             </div>
             <p class=''>$content</p>";
           if (strlen($article['Content']) > 200){
@@ -36,7 +36,7 @@
     <div class='article-container display-flex flex-direction-column'>
         <div class='header-article display-flex globale-margin'>
             <h2>Événements</h2>
-            <a><img src='../../public/img/menu-down.svg'></a>
+            <a><img src='public/img/menu-down.svg'></a>
         </div>
         <div class='divider'></div>
     "?>
@@ -52,8 +52,8 @@
         }
         echo "
             <div class='display-flex globale-margin author-article'>
-                <h3 class='article-title'>${article[Title]}</h3>
-                <h4 class='article-author'>De ${article[Pseudo]} le $formatedDate.</h4>
+                <h3 class='article-title'>${article['Title']}</h3>
+                <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>
             </div>
             <p>$content</p>";
             if (strlen($article['Content']) > 200){

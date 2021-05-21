@@ -7,7 +7,7 @@ class Article extends Model{
         $this->bddConnexion();
     }
     public function getArticle(){
-        $sql = 'SELECT Date,Title,Content,articles.ArticleID ,articles.UserID, users.UserID, users.Pseudo FROM articles INNER JOIN users ON articles.UserID = users.UserID WHERE articles.Article = 1';
+        $sql = 'SELECT Date, Title,Content,articles.ArticleID ,articles.UserID, users.UserID, users.Pseudo FROM articles INNER JOIN users ON articles.UserID = users.UserID WHERE articles.Article = 1';
         $query = $this->bdd->prepare($sql);
         $query->execute();
         return $query->fetchALl();
