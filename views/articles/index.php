@@ -27,10 +27,10 @@
                 <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>
             </div>
             <p class=''>$content</p>";
-          if (strlen($article['Content']) > 200){
-              echo"<a class='more' methods='post' href='/articles/read/${article['ArticleID']}'>Lire la suite</a>";
-          }
-          echo "<div class='divider'></div>";}
+        if (strlen($article['Content']) > 200){
+            echo"<a class='more' methods='post' href='/articles/read/${article['ArticleID']}'>Lire la suite</a>";
+        }
+        echo "<div class='divider'></div>";}
 }?>
 <?="</div>
     <div class='article-container display-flex flex-direction-column'>
@@ -56,10 +56,10 @@
                 <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>
             </div>
             <p>$content</p>";
-            if (strlen($article['Content']) > 200){
-              echo"<a class='more' href='/'>Lire la suite</a>";
-          }
-          echo "<div class='divider'></div>";}
+        if (strlen($article['Content']) > 200){
+            echo"<a class='more' href='/'>Lire la suite</a>";
+        }
+        echo "<div class='divider'></div>";}
 }?>
 
 <?="</div>

@@ -26,6 +26,9 @@ h3{
 .globale-margin{
     margin: 15px 30px;
 }
+.globale-padding{
+    padding: 15px 30px;
+}
 .divider{
     width: 100%;
     height: 2px;
@@ -33,6 +36,7 @@ h3{
 }
 body{
     background-color: #fafafa;
+    height: 100vh;
 }
 /*
 Class news
@@ -193,4 +197,415 @@ Class css articles
         color: #FF8900;
         margin: 0 0 8px 30px;
     }
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+/*********** CSS OF THE BACKOFFICE ***********/
+/*********** CSS OF THE BACKOFFICE ***********/
+
+.main-backoffice {
+    display:flex;
+    flex-direction: column;
+    margin:auto;
+}
+
+.profilpic {
+    width:50px;
+    border-radius: 50%;
+    margin:auto;
+}
+
+.main-backoffice {
+    display:flex;
+    margin:0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin:0 auto;
+    display:flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width:80%;
+}
+
+
+.infouser {
+    display: flex;
+    justify-content: space-between;
+    margin:15px;
+}
+
+.infouser a {
+    text-decoration: none;
+    font-size:1.2em;
+    font-weight: 700;
+    margin-right:20px;
+}
+
+.infoperso {
+    display: flex;
+    justify-content: space-around;
+}
+
+.infoperso div {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoperso + div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.team-members {
+    box-sizing: border-box;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    width: 100%;
+    margin: auto;
+}
+
+.team-members i {
+    border:1px solid black;
+    border-radius: 100%;
+    padding:10px;
+    font-size:1.5em;
+}
+
+.list-user-pic {
+    width:30%;
+    align-self: center;
+    text-align: center;
+}
+
+.list-user-div {
+    display:flex;
+    border:1px solid black;
+}
+
+.iconprofilpic {
+    width:70%;
+}
+
+.user-info {
+    display:flex;
+    justify-content: space-between;
+}
+
+.favcharacter img {
+    width:40px;
+}
+
+.edit-delete {
+    align-self: center;
+    margin:20px;
+}
+
+.edit-delete i {
+    margin:10px;
+}
+
+.post-container {
+    width:80%;
+    margin:auto;
+    border:1px solid black;
+}
+
+.post h2 {
+    margin-left:30px;
+}
+
+.post {
+    display:flex;
+    justify-content: space-between;
+    border:1px solid black;
+}
+
+.post-title {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-date {
+    align-items: center;
+}
+
+.post-edit-delete {
+    align-self: center;
+    width:30%;
+}
+
+.post-edit-delete i {
+    font-size:2.5em;
+    margin:0 35px;
+}
+
+
+/*********** CSS OF THE TEAM PAGE ***********/
+/*********** CSS OF THE TEAM PAGE ***********/
+
+.main-team {
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    margin:auto;
+}
+
+.main-team h1 {
+    text-align: center;
+}
+
+.container-team {
+    width:80%;
+    margin:30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.member {
+
+    display:flex;
+    border:1px solid black;
+    align-items: center;
+}
+
+.member div:first-child {
+    width:35%;
+}
+
+.team-profilpic {
+    width:50px;
+    border-radius: 50%;
+    margin:10px;
+}
+
+.team-iconperso {
+    width:35px;
+}
+
+.team-favcharac {
+    display:flex;
+    justify-content: space-around;
+    margin:10px;
+}
+
+/*********** CSS OF THE CHARATERS ***********/
+/*********** CSS OF THE CHARATERS ***********/
+
+.main-characters-mobile {
+    background: url("../img/bg.jpeg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.main-characters-desktop {
+    display:none;
+}
+
+.liste-charac-mobile {
+    margin:auto;
+    text-align: center;
+}
+.selectCharacter{
+    border-radius: 6px;
+    border: none;
+    height: 44px;
+    padding: 0 15px;
+    font-family: "Arial Black";
+    text-transform: uppercase;
+    color: #464B60;
+    box-shadow: 0px 0px 5px rgba(0,0,0, .3);
+}
+.liste-charac-mobile select{
+    width:80%;
+    margin:auto;
+    height:40px;
+    border-radius: 10px;
+}
+
+.characters-content{
+    height: calc(100vh - 62.06px);
+    background-color: red;
+}
+
+.info-characters{
+
+}
+
+.img-characters {
+
+}
+
+.skills-container{
+    position: sticky;
+    bottom: 0;
+}
+
+.div-info-characters {
+    margin:auto;
+    text-align: center;
+    position: absolute;
+    top: 250px;
+}
+
+.h2-character {
+    text-transform: uppercase;
+    font-family: "Arial Black";
+    width: fit-content;
+    padding: 5px 18px;
+    background-color: #FF8900;
+    color:white;
+    text-transform: uppercase;
+    font-size:1.8em;
+}
+
+.p-character {
+    width:50%;
+    margin: -4px 0 0 150px;
+    background-color:rgba( 0,0,0, 0.3);
+    color:white;
+    font-size:0.85em;
+    padding:20px;
+}
+
+.liste-skills {
+    background-color:rgba(19,42,77);
+    text-align: center;
+}
+
+.liste-skills select {
+    width:80%;
+    margin:auto;
+    background-color:rgba(19,42,77,.85);
+    border:none;
+    color:white;
+    height:40px;
+}
+
+.div-skill video {
+    width:100%;
+    position: relative;
+}
+
+.p-skill {
+    background-color:rgba( 0,0,0, 0.3);
+    color: white;
+    left: 20px;
+    text-align: center;
+    font-size:0.75em;
+    padding:20px;
+}
+
+@media screen and (min-width: 1024px) {
+
+    /*********** CSS OF THE BACKOFFICE ***********/
+    /*********** CSS OF THE BACKOFFICE ***********/
+    .main-backoffice {
+        flex-direction: row;
+    }
+    .container {
+        display:block;
+    }
+
+    /*********** CSS OF THE TEAM ***********/
+    /*********** CSS OF THE TEAM ***********/
+
+    .container-team {
+        flex-direction:row;
+        justify-content: center;
+    }
+
+    .member {
+        width:50%;
+    }
+
+
+    /*********** CSS OF THE CHARACTERS ***********/
+    /*********** CSS OF THE CHARACTERS ***********/
+
+    .main-characters-mobile {
+        height: 60%;
+    }
+
+    .main-characters-desktop {
+        background: url("src/bg-characters") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        display:block;
+    }
+
+    .div-liste-charac {
+        text-align: center;
+    }
+
+    .icon-list-charac {
+        width:7%;
+        margin:10px;
+        border-radius: 100%;
+    }
+
+    .div-characters {
+        width:100%;
+        margin:30px auto;
+        display:flex;
+        justify-content: space-around;
+    }
+
+    .img-character-2 {
+        width:250px;
+        position:relative;
+        margin:35px;
+    }
+
+    .h2-character-2 {
+        position: absolute;
+        bottom: 30%;
+        left: 15%;
+        font-size:3em;
+    }
+
+    .p-character-2 {
+        position: absolute;
+        top: 65%;
+        left: 15%;
+        font-size:1.5em;
+        width:20%;
+    }
+
+    .div-img-charac {
+        align-self: center;
+    }
+
+    .div-skills-list {
+        width:70%;
+    }
+
+    .div-skills-list table tr td select {
+        height:60px;
+        width:100%;
+        margin: auto;
+        background-color: rgba(19,42,77,.85);
+        border: none;
+        color: white;
+    }
+
+    .div-skills-list table tr td select option {
+        height:60px;
+    }
+
+    .div-skills-list video {
+        width:100%;
+    }
+
 }

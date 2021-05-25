@@ -1,8 +1,9 @@
 <?php
+ session_start();
  define("ROOT", str_replace('index.php','',$_SERVER['SCRIPT_FILENAME']));
  date_default_timezone_set("Europe/Paris");
-require_once(ROOT.'app/Controller.php');
-require_once(ROOT.'app/Model.php');
+ require_once(ROOT.'app/Controller.php');
+ require_once(ROOT.'app/Model.php');
 
  //Sépare les parametre de l'url a partir des '/'
  $params = explode('/', $_GET['p']);
