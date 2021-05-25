@@ -1,6 +1,6 @@
 <?php $title = "Page de profil" ?>
 
-<?php ob_start(); ?>
+<?php ob_start(); var_dump($getArticlesUser, $data);?>
 <main class="main-backoffice">
     <div class="container">
         <div class="infouser">
@@ -98,133 +98,30 @@
     </div>
 
     <div class="post-container">
-        <h2>Posts</h2>
-        <div class="post">
-            <!--function select posts table-->
-            <div class="post-title">
-                <h3>*Post title*</h3>
-                <p>last reponse by : *name*</p>
-            </div>
-            <div class="post-date">
-                <p>Post by *name* - *date*</p>
-            </div>
-            <div class="post-edit-delete">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        </div>
-        <div class="post">
+        <h2>Postes</h2>
 
-            <div class="post-title">
-                <h3>*Post title*</h3>
-                <p>last reponse by : *name*</p>
+        <?php
+        foreach ($getArticlesUser as $articles){
+            $date = $articles['Date'];
+            $formatedDate = date('d/m/Y', strtotime($date));
+            echo"
+            <div class='post display-flex flex-direction-column'>
+            <div class='display-flex author-article'>
+                <h3 class='article-title'>${articles["Title"]}</h3>
+                <h4 class='article-author'>De ${articles["Pseudo"]}, le $formatedDate</h4>
             </div>
-            <div class="post-date">
-                <p>Post by *name* - *date*</p>
+            <div class='post-date'>
+                <p>Derniere réponse de : </p>
             </div>
-            <div class="post-edit-delete">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-ban"></i>
+            <div class='post-edit-delete'>
+                <i class='fas fa-edit'></i>
+                <i class='fas fa-ban'></i>
             </div>
-        </div>
-        <div class="post">
+            </div>
+        ";
+        }
+        ?>
 
-            <div class="post-title">
-                <h3>*Post title*</h3>
-                <p>last reponse by : *name*</p>
-            </div>
-            <div class="post-date">
-                <p>Post by *name* - *date*</p>
-            </div>
-            <div class="post-edit-delete">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        </div>
-        <div class="post">
-
-            <div class="post-title">
-                <h3>*Post title*</h3>
-                <p>last reponse by : *name*</p>
-            </div>
-            <div class="post-date">
-                <p>Post by *name* - *date*</p>
-            </div>
-            <div class="post-edit-delete">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        </div>
-        <div class="post">
-
-            <div class="post-title">
-                <h3>*Post title*</h3>
-                <p>last reponse by : *name*</p>
-            </div>
-            <div class="post-date">
-                <p>Post by *name* - *date*</p>
-            </div>
-            <div class="post-edit-delete">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        </div>
-        <div class="post">
-
-            <div class="post-title">
-                <h3>*Post title*</h3>
-                <p>last reponse by : *name*</p>
-            </div>
-            <div class="post-date">
-                <p>Post by *name* - *date*</p>
-            </div>
-            <div class="post-edit-delete">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        </div>
-        <div class="post">
-
-            <div class="post-title">
-                <h3>*Post title*</h3>
-                <p>last reponse by : *name*</p>
-            </div>
-            <div class="post-date">
-                <p>Post by *name* - *date*</p>
-            </div>
-            <div class="post-edit-delete">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        </div>
-        <div class="post">
-
-            <div class="post-title">
-                <h3>*Post title*</h3>
-                <p>last reponse by : *name*</p>
-            </div>
-            <div class="post-date">
-                <p>Post by *name* - *date*</p>
-            </div>
-            <div class="post-edit-delete">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        </div>
-        <div class="post">
-
-            <div class="post-title">
-                <h3>*Post title*</h3>
-                <p>last reponse by : *name*</p>
-            </div>
-            <div class="post-date">
-                <p>Post by *name* - *date*</p>
-            </div>
-            <div class="post-edit-delete">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        </div>
     </div>
 </main>
 

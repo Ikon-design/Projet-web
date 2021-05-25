@@ -1,7 +1,7 @@
 <?php $title = 'Overwatch | Personnages';?>
 
 <?php ob_start();?>
-    <div class="characters-content">
+    <div class="characters-content display-flex flex-direction-column">
         <div class="main-characters-mobile display-flex flex-direction-column globale-padding">
             <select id="selectCharacter" class="selectCharacter" onchange="setUrl()">
                 <?php
@@ -12,57 +12,49 @@
                 }
                 ?>
             </select>
-            <div class="info-characters">
+            <?php
+            $image = $character["Img"];
+            $style = "background-image: url($image)";
+            echo "<div class='character-info display-flex flex-direction-column' style='$style'; >";
+            ?>
                 <h2 class="h2-character"><?php echo "${character['Name']}"?></h2>
                 <img src="" class="h3-charac-icon">
                 <p class="p-character">
                     <?php echo "${character['Description']}"?>
                 </p>
-            </div>
-            <?php
-            if (isset($character)) {
-                //echo"<img src=${character['Img']} alt='image of the character Ana from Overwatch' class='img-character'>";
-            } ?>
+                </div>
         </div>
 
         <div class="skills-container">
-            <div class="liste-skills">
+            <div class="liste-skills display-flex globale-padding">
                 <?php
-                echo '<select onchange="setSkill()" id="selectSkill">';
+                echo '<img id="skillIcon" class="skillIcon" src="" /> <select onchange="setSkill()" id="selectSkill">';
                 $i = 0;
                 if (isset($getSkills)) {
                     foreach ($getSkills as $skill) {
-                        echo "<script>sessionStorage.setItem(${skill['SkillID']}, '${skill['Video']}')</script>";
-                        echo "<option value='${skill['SkillID']}'>${skill['Name']}</option>";}
+                        echo "
+                        <script>
+                            localStorage.setItem($i, '${skill['Video']}')
+                            sessionStorage.setItem($i, '${skill['Description']}')
+                            sessionStorage.setItem('skillIcon' + $i, '${skill['Icon']}')
+                        </script>
+                        <option value='$i'>${skill['Name']}</option>";
+                        $i = $i+ 1;
+                    }
                 }
-                $i++;
+                
                 ?>
                 </select>
             </div>
-            <div class="div-skill">
-                <video muted="muted" autoplay loop>
-                    <source id="Video" type="video/webm" src='selectedSkill'>
-                </video>
-                <p class="p-skill globale-margin">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum cupiditate exercitationem, doloribus delectus quasi laboriosam totam cum nesciunt recusandae, nostrum corporis iure nam, ea odio. Ut nesciunt rem possimus natus.
+          
+            <div class="div-skill" id="skill">
+                <p class="p-skill globale-margin globale-padding" id="description">
                 </p>
+                <video id="Video" muted="muted" autoplay loop class="video">
+                    <source type="video/webm" src=''>
+                </video>
             </div>
         </div>
-        <!--
-        <main class="main-characters-desktop">
-            <div class="div-liste-charac">
-            </div>
-            <div class="div-characters">
-                <div class="div-img-charac">
-                    <img  alt="icon ana character overwatch" class="img-character-2">
-                    <h2 class="h2-character-2">Ana</h2>
-                    <p class="p-character-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, amet. Veritatis quam praesentium sapiente nisi animi. Maiores illum qui impedit nostrum totam, voluptates itaque ipsam porro consectetur ab quasi repellendus?
-                    </p>
-                </div>
-            </div>
-            </main
-          -->
     </div>
 <?php $content = ob_get_clean(); ?>
 
