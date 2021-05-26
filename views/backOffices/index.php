@@ -1,6 +1,6 @@
 <?php $title = "Page de profil" ?>
 
-<?php ob_start(); var_dump($getArticlesUser, $data);?>
+<?php ob_start();?>
 <main class="main-backoffice">
     <div class="container">
         <div class="infouser">
@@ -101,7 +101,9 @@
         <h2>Postes</h2>
 
         <?php
+        var_dump($getCommentArticle);
         foreach ($getArticlesUser as $articles){
+
             $date = $articles['Date'];
             $formatedDate = date('d/m/Y', strtotime($date));
             echo"
@@ -111,15 +113,14 @@
                 <h4 class='article-author'>De ${articles["Pseudo"]}, le $formatedDate</h4>
             </div>
             <div class='post-date'>
-                <p>Derniere réponse de : </p>
+                <p>Derniere réponse de : ${getCommentArticle["Pseudo"]}</p>
             </div>
             <div class='post-edit-delete'>
                 <i class='fas fa-edit'></i>
                 <i class='fas fa-ban'></i>
             </div>
             </div>
-        ";
-        }
+        ";}
         ?>
 
     </div>

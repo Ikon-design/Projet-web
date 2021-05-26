@@ -455,7 +455,7 @@ Class css articles
 }
 
 .liste-skills {
-    background-color:rgba(19,42,77);
+    background-color:rgba(19,42,77, 1);
     text-align: center;
 }
 

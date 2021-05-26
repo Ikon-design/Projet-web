@@ -28,4 +28,10 @@ class BackOffice extends Model{
         $query->execute();
         return $query->fetch();
     }
+    public function commentsArticle($id){
+        $sql = 'SELECT comments.Content, comments.Date, users.Pseudo FROM comments JOIN users ON comments.UserID = users.UserID WHERE comments.ArticleID = '.$id;
+        $query = $this->bdd->prepare($sql);
+        $query->execute();
+        return $query->fetchALl();
+    }
 }

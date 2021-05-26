@@ -7,7 +7,11 @@ class BackOffices extends Controller {
         $this->loadModel("BackOffice");
         $data = $this->BackOffice->getUser($id);
         $getArticlesUser = $this->BackOffice->getArticlesUser($id);
-
-        $this->render('index', compact('data', 'getArticlesUser'));
+        $getCommentArticle = [];
+        foreach ($getArticlesUser as $articles){
+            $getCommentArticle[$articles["ArticleID"]] = $this->BackOffice->commentsArticle($articles['ArticleID']);
+        }
+        var_dump($getCommentArticle);
+        $this->render('index', compact('data', 'getArticlesUser', 'getCommentArticle'));
     }
 }
