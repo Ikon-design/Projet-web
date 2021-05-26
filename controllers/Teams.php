@@ -6,7 +6,7 @@ class Teams extends Controller {
     public function index(){
 
         $this->loadModel("Team");
-        $teams = $this->Team->getAll();
-        $this->render('index', compact('teams'));
+        $getTeam = $this->Team->getTeam();
+        $this->render('index', compact('getTeam'));
     }
 }

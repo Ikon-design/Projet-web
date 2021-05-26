@@ -5,13 +5,13 @@ class BackOffices extends Controller {
      * */
     public function index($id){
         $this->loadModel("BackOffice");
-        $data = $this->BackOffice->getUser($id);
+        $getUser = $this->BackOffice->getUser($id);
         $getArticlesUser = $this->BackOffice->getArticlesUser($id);
-        $getCommentArticle = [];
-        foreach ($getArticlesUser as $articles){
-            $getCommentArticle[$articles["ArticleID"]] = $this->BackOffice->commentsArticle($articles['ArticleID']);
+        $getTeam = $this->BackOffice->getTeam();
+        foreach ($getArticlesUser as $key => $article){
+            $getArticlesUser[$key]['lastComment'] = $this->BackOffice->getLastArticleComment($article['ArticleID']);
         }
-        var_dump($getCommentArticle);
-        $this->render('index', compact('data', 'getArticlesUser', 'getCommentArticle'));
+
+        $this->render('index', compact('getUser', 'getArticlesUser', 'getTeam'));
     }
 }

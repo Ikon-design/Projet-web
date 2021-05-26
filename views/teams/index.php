@@ -2,157 +2,42 @@
 
 <?php ob_start(); ?>
 <main class="main-team">
-    <h1>Team members of *name of the team*</h1>
-    <div class="container-team">
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
+    <?php
+        foreach ($getTeam as $usersTeam){
+            //var_dump($getTeam);
+            echo "
+            <div class='list-user-div display-flex'>
+            <div class='list-user-pic'>
+                <img src='src/profilpic.jpg' alt='icon profil pic' class='iconprofilpic'>
             </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
+            <div class='user-info globale-padding'>   
+                <div class='favcharacter display-flex flex-direction-column'>
+                    <img class='iconCharacter' src='${usersTeam['Icon']}'>
+                    <h3>${usersTeam['Name']}</h3>
+                </div>
+            
+                <div>
+                    <h4>${usersTeam['Fname']} ${usersTeam['Lname']}</h4>
+                    <h3>${usersTeam['Pseudo']}</h3>
+                    <h4>${usersTeam['Mail']}</h4>
+                </div>
+             
+                <div class='edit-delete'>
+                    <i class='fas fa-edit'></i>
+                    <i class='fas fa-ban'></i>
                 </div>
             </div>
-        </div>
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
-            </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
-                </div>
+            <div class='display-flex'>";
+            if ($usersTeam["Player"] == 1 ){
+                echo "<div class='user-type'>Joueur</div>";
+            } else if ($usersTeam["Manager"] == 1){
+                echo "<div class='user-type'>Manageur</div>";
+            }
+            echo "
             </div>
         </div>
-    </div>
-    <div class="container-team">
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
-            </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
-                </div>
-            </div>
-        </div>
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
-            </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-team">
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
-            </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
-                </div>
-            </div>
-        </div>
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
-            </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-team">
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
-            </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
-                </div>
-            </div>
-        </div>
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
-            </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-team">
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
-            </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
-                </div>
-            </div>
-        </div>
-        <div class="member">
-            <div>
-                <img src="src/profilpic.jpg" alt="profil pic of team member" class="team-profilpic">
-            </div>
-            <div>
-                <h3>Clément Legrix</h3>
-                <h2>CLEMENTLEBG</h2>
-                <h4>Legrix.clement@gmail.com</h4>
-                <div class="team-favcharac">
-                    <img src="src/iconperso.png" alt="icon perso ow" class="team-iconperso">
-                    <p>Mei</p>
-                </div>
-            </div>
-        </div>
-    </div>
+            ";
+    } ?>
 </main>
 <?php
  $content = ob_get_clean();
