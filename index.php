@@ -17,7 +17,7 @@
      require_once (ROOT.'controllers/'.$controller.'.php');
 
      $controller = new $controller();
-
+     //var_dump($controller);
      if (method_exists($controller, $action)){
          unset($params[0]);
          unset($params[1]);

@@ -9,10 +9,11 @@ class BackOffice extends Model{
     }
 
     public function getUser($id){
-        $sql = "SELECT * FROM users INNER JOIN characters ON users.CharacterID = characters.CharacterID INNER JOIN class ON characters.ClassID = class.ClassID WHERE UserID =". $id;
+        $sql = "SELECT * FROM users LEFT JOIN characters ON users.CharacterID = characters.CharacterID LEFT JOIN class ON characters.ClassID = class.ClassID WHERE UserID =". $id;
         $query = $this->bdd->prepare($sql);
         $query->execute();
-        return $query->fetch();
+        $res = $query->fetch();
+        return $res;
     }
 
     public function getArticlesUser($id){
@@ -32,14 +33,30 @@ class BackOffice extends Model{
         $sql = 'SELECT comments.Content, comments.Date, users.Pseudo FROM comments JOIN users ON comments.UserID = users.UserID WHERE comments.ArticleID = '.$id.' LIMIT 1';
         $query = $this->bdd->prepare($sql);
         $query->execute();
-        return $query->fetchALl();
+        return $query->fetchAll();
     }
     public function getTeam(){
         $sql = 'SELECT * FROM users LEFT JOIN characters ON users.CharacterID = characters.CharacterID WHERE Manager = 1 OR Player = 1';
         $query = $this->bdd->prepare($sql);
         $query->execute();
-        $res = $query->fetchALl();
+        $res = $query->fetchAll();
         return $res;
     }
-
+    public function getCharacters(){
+        $sql = 'SELECT * FROM characters';
+        $query = $this->bdd->prepare($sql);
+        $query->execute();
+        $res = $query->fetchAll();
+        return $res;
+    }
+    public function edit($id){
+        $pseudo = "'".$_POST['Pseudo']."'";
+        $Fname = "'".$_POST['Fname']."'";
+        $Lname = "'".$_POST['Lname']."'";
+        $Mail = "'".$_POST['Mail']."'";
+        $CharacterID = $_POST['CharacterID'];
+        $sql = "UPDATE users SET Pseudo = ${pseudo} , Fname = ${Fname} , Lname = ${Lname} , Mail = ${Mail}, CharacterID = ${CharacterID} WHERE users.UserID = ".$id;
+        $query = $this->bdd->prepare($sql);
+        $res = $query->execute();
+    }
 }

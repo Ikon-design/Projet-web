@@ -1,6 +1,6 @@
 <?php $title = 'Team - Cube'; ?>
 
-<?php ob_start(); ?>
+<?php ob_start();?>
 
 <div class="display-flex news-container">
     <div class="left-news">

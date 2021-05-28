@@ -5,7 +5,7 @@
     <div class="container">
         <div class="infouser">
             <?php echo "<h2>${getUser['Pseudo']}</h2>";?>
-            <a href="#">change my informations</a>
+            <a onclick="ChangeInformation()">Modifier mes informations</a>
         </div>
         <div class="infoperso">
             <div>
@@ -51,41 +51,49 @@
                 </div>
              
                 <div class='edit-delete'>
-                    <i class='fas fa-edit'></i>
-                    <i class='fas fa-ban'></i>
+                    <a onclick='editUser( ${usersTeam['UserID']} )'><img src='/public/img/pencil.svg' class='fas fa-edit'></a>
+                    <a href='/teams/delete/${usersTeam['UserID']}'><img src='/public/img/delete.svg' class='fas fa-ban'></a>
                 </div>
             </div>
             <div class='display-flex'>";
-            if ($usersTeam["Player"] == 1 ){
-                echo "<div class='user-type'>Joueur</div>";
-            } else if ($usersTeam["Manager"] == 1){
-                echo "<div class='user-type'>Manageur</div>";
-            }
-            echo "
+                if ($usersTeam["Player"] == 1 ){
+                    echo "<div class='user-type'>Joueur</div>";
+                } else if ($usersTeam["Manager"] == 1){
+                    echo "<div class='user-type'>Manageur</div>";
+                }
+                echo "
             </div>
-        </div>
-            ";
-
-            }
+            <dialog id='edit-dialog${usersTeam['UserID']}' class='edit-dialog'>
+                <form method='post'>
+                    <label for='ad'>Joueur</label>
+                    <input type='checkbox' name='player' value='1'>
+                    <label for='ad'>Manager</label>
+                    <input type='checkbox' name='manager' value='1'>
+                    <label for='ad'>Admin</label>
+                    <input type='checkbox' name='admin' value='1'>
+                    <input type='submit' value='Valider' formaction=${url2}>
+                </form>
+            </dialog>
+        </div>";}
         } ?>
     </div>
-        <div class="post-container">
-            <h2>Postes</h2>
+    <div class="post-container">
+        <h2>Postes</h2>
 
-            <?php
-            foreach ($getArticlesUser as $articles){
-                $date = $articles['Date'];
-                $formatedDate = date('d/m/Y', strtotime($date));
-                $lastComment = $articles['lastComment'];
+        <?php
+        foreach ($getArticlesUser as $articles){
+            $date = $articles['Date'];
+            $formatedDate = date('d/m/Y', strtotime($date));
+            $lastComment = $articles['lastComment'];
 
-                if (strlen($articles['Content']) > 200){
-                    $content = substr($articles['Content'], 0, 200)."...";
-                    $endPoint = strrpos($content, ' ');
-                }else {
-                    $content = $articles['Content'];
-                }
+            if (strlen($articles['Content']) > 200){
+                $content = substr($articles['Content'], 0, 200)."...";
+                $endPoint = strrpos($content, ' ');
+            }else {
+                $content = $articles['Content'];
+            }
 
-                echo"
+            echo"
             <div class='post display-flex flex-direction-column'>
             <div class='display-flex author-article'>
                 <h3 class='article-title'>${articles["Title"]}</h3>
@@ -94,23 +102,45 @@
             </div>
             <div class='post-date'>
             <p>$content</p>";
-                if (strlen($articles['Content']) > 200){
-                    echo"<a class='more' href='/articles/read/${articles["ArticleID"]}'>Lire la suite</a>";
-                }
-                if ($lastComment['Pseudo'] == null) {
-                    echo"<p> Il n'y a pas de commentaires</p>";
-                }else{
-                    echo"<p> Derniere réponse de : ${lastComment['Pseudo']} </p>";
-                }
-                echo"
+            if (strlen($articles['Content']) > 200){
+                echo"<a class='more' href='/articles/read/${articles["ArticleID"]}'>Lire la suite</a>";
+            }
+            if ($lastComment['Pseudo'] == null) {
+                echo"<p> Il n'y a pas de commentaires</p>";
+            }else{
+                echo"<p> Derniere réponse de : ${lastComment['Pseudo']} </p>";
+            }
+            echo"
             </div>
             <div class='post-edit-delete'>
                 <i class='fas fa-edit'></i>
                 <i class='fas fa-ban'></i>
             </div>
             </div>
+            
         ";}
-            ?>
+        $url = "/backOffices/edit/${getUser['UserID']}";
+        $url2 = "/teams/edit/${getTeam['UserID']}";
+        var_dump($getTeam);
+        //var_dump($usersTeam);
+        echo "<dialog id='ChangeInformation'>
+                <form method='post'>
+                    <input type='text' name='Pseudo' value='${getUser["Pseudo"]}'>
+                    <input type='text' name='Lname' value='${getUser["Lname"]}'>
+                    <input type='text' name='Fname' placeholder='Prénom' value='${getUser["Fname"]}'>
+                    <input type='email' name='Mail' value='${getUser["Mail"]}'>
+                    <select name='CharacterID'>
+                        <option selected value='${getUser["CharacterID"]}'>${getUser["Name"]}</option>";
+                        foreach ($getCharacters as $characters){
+                            echo "<option value='${characters['CharacterID']}'>${characters['Name']}</option>";
+                        }
+            echo "</select>
+                  <input type='submit' value='Valider' formaction=${url}>
+                  <button onclick='cancelChange()'>Annuler</button>
+                </form>
+            </dialog>";
+
+        ?>
 </main>
 
 <?php

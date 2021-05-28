@@ -45,3 +45,20 @@ function setSkill()
     description.innerHTML = sessionStorage.getItem(selectSkill)
     skillIcon.src = sessionStorage.getItem('skillIcon'+selectSkill)
 }
+
+function editUser($id)
+{
+    let dialog = document.getElementById("edit-dialog" + $id)
+    dialog.open = true
+}
+
+function ChangeInformation()
+{
+    let dialog = document.getElementById('ChangeInformation')
+    dialog.open = true
+}
+
+function cancelChange()
+{
+    dialog.open = false
+}

@@ -1,8 +1,8 @@
 <?php $title = 'OverWatch | Team Cube'; ?>
 
-<?php ob_start(); ?>
-<main class="main-team">
-    <?php
+<?php ob_start(); var_dump($_POST);?>
+    <main class="main-team">
+        <?php
         foreach ($getTeam as $usersTeam){
             //var_dump($getTeam);
             echo "
@@ -21,10 +21,10 @@
                     <h3>${usersTeam['Pseudo']}</h3>
                     <h4>${usersTeam['Mail']}</h4>
                 </div>
-             
+                
                 <div class='edit-delete'>
-                    <i class='fas fa-edit'></i>
-                    <i class='fas fa-ban'></i>
+                    <a onclick='editUser(${usersTeam['UserID']})'><img src='/public/img/pencil.svg' class='fas fa-edit'></a>
+                    <a href='/teams/delete/${usersTeam['UserID']}'><img src='/public/img/delete.svg' class='fas fa-ban'></a>
                 </div>
             </div>
             <div class='display-flex'>";
@@ -33,13 +33,25 @@
             } else if ($usersTeam["Manager"] == 1){
                 echo "<div class='user-type'>Manageur</div>";
             }
+            $url = "/teams/edit/${usersTeam['UserID']}";
             echo "
             </div>
         </div>
+        <dialog id='edit-dialog${usersTeam['UserID']}' class='edit-dialog'>
+                <form method='post'>
+                    <label for='ad'>Joueur</label>
+                    <input type='checkbox' name='player' value='1'>
+                    <label for='ad'>Manager</label>
+                    <input type='checkbox' name='manager' value='1'>
+                    <label for='ad'>Admin</label>
+                    <input type='checkbox' name='admin' value='1'>
+                    <input type='submit' value='Valider' formaction=${url}>
+                </form>
+            </dialog>
             ";
-    } ?>
-</main>
+        }?>
+    </main>
 <?php
- $content = ob_get_clean();
- include (ROOT.'views/template.php');
+$content = ob_get_clean();
+include (ROOT.'views/template.php');
 ?>
