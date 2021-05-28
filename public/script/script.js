@@ -60,5 +60,11 @@ function ChangeInformation()
 
 function cancelChange()
 {
+    let dialog = document.getElementById('ChangeInformation')
     dialog.open = false
+}
+
+function addmember(){
+    let dialog = document.getElementById('addMember')
+    dialog.open = true
 }

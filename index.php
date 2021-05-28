@@ -9,6 +9,11 @@
  $params = explode('/', $_GET['p']);
 
  if($params[0] != ""){
+     if (!isset($_SESSION['UserID'])){
+         include (ROOT.'controllers/Logins.php');
+         $controller = new Logins();
+         $controller->index();
+     }else{
      // Met un maj sur la premiere lettre du premier parametre
      $controller = ucfirst($params[0]);
      // Test si un deuxieme parametre existe sinon renvoie index
@@ -19,19 +24,20 @@
      $controller = new $controller();
      //var_dump($controller);
      if (method_exists($controller, $action)){
-
          unset($params[0]);
          unset($params[1]);
          call_user_func_array([$controller, $action], $params);
      }else{
          http_response_code(404);
          echo "La page demandée n'existe pas";
-     }
+     }}
  }else{
-     if(!isset($_SESSION['Pseudo'])){
-     header('location:logins');
- } else {
-         include (ROOT.'controllers/Main.php');
+     if (!isset($_SESSION['UserID'])){
+         include (ROOT.'controllers/Logins.php');
+         $controller = new Logins();
+         $controller->index();
+     }else {
+         include(ROOT . 'controllers/Main.php');
          $controller = new Main();
          $controller->index();
      }

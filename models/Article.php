@@ -32,4 +32,19 @@ class Article extends Model{
         $query->execute();
         return $query->fetchALl();
     }
+
+    public function deleteArticle($id){
+        $sql = 'DELETE articles FROM articles INNER JOIN comments ON articles.ArticleID = comments.ArticleID WHERE articles.ArticleID ='.$id;
+        $query = $this->bdd->prepare($sql);
+        $query->execute();
+    }
+
+    public function editArticles($id){
+        $content = htmlspecialchars($_POST["content"], ENT_QUOTES);
+        $title = htmlspecialchars($_POST["title"], ENT_QUOTES);
+        $sql = "UPDATE articles SET  Title = :title, Content = :content WHERE ArticleID = :id";
+        $query = $this->bdd->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $res = $query->execute(array(':title' => $title, ':content' => $content, ':id' => $id));
+        var_dump($title, $content, $res, $sql);
+    }
 }

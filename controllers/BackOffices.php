@@ -3,10 +3,10 @@ class BackOffices extends Controller {
     /**
      * @return void
      * */
-    public function index($id){
+    public function index(){
         $this->loadModel("BackOffice");
-        $getUser = $this->BackOffice->getUser($id);
-        $getArticlesUser = $this->BackOffice->getArticlesUser($id);
+        $getUser = $this->BackOffice->getUser($_SESSION['UserID']);
+        $getArticlesUser = $this->BackOffice->getArticlesUser($_SESSION['UserID']);
         $getTeam = $this->BackOffice->getTeam();
         $getCharacters = $this->BackOffice->getCharacters();
         foreach ($getArticlesUser as $key => $article){
