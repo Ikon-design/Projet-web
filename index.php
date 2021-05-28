@@ -19,6 +19,7 @@
      $controller = new $controller();
      //var_dump($controller);
      if (method_exists($controller, $action)){
+
          unset($params[0]);
          unset($params[1]);
          call_user_func_array([$controller, $action], $params);
@@ -27,9 +28,13 @@
          echo "La page demandée n'existe pas";
      }
  }else{
-    include (ROOT.'controllers/Main.php');
-    $controller = new Main();
-    $controller->index();
+     if(!isset($_SESSION['Pseudo'])){
+     header('location:logins');
+ } else {
+         include (ROOT.'controllers/Main.php');
+         $controller = new Main();
+         $controller->index();
+     }
  }
 
  // indexView();
