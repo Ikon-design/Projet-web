@@ -1,6 +1,6 @@
 <?php $title = "Page de profil" ?>
 
-<?php ob_start();?>
+<?php ob_start(); var_dump($_POST);?>
 <main class="main-backoffice">
     <div class="container">
         <div class="infouser">
@@ -138,14 +138,25 @@
                 </form>
             </dialog>
             <dialog id='addMember'>
-                <form>
-                    <input type='text' name='Pseudo' placeholder='Pseudo'>
-                    <input type='text' name='Lname' placeholder='Nom'>
-                    <input type='text' name='Fname' placeholder='Prénom' >
-                    <input type='email' name='Mail' placeholder='Mail' >
+                <form method='post'>
+                <select name='UsersID'>";
+        foreach ($getUsers as $users){
+            echo "<option value='${users['UserID']}'>${users['Pseudo']}</option>";
+        }
+        echo "</select>
                     <select name='CharacterID'>";
         foreach ($getCharacters as $characters){
             echo "<option value='${characters['CharacterID']}'>${characters['Name']}</option>";
+        }
+        if ($getUser["Admin"] == 1){
+            echo "
+                <input type='checkbox' name='Joueur'>
+                <label for='Joueur'>Joueur</label>
+                <input type='checkbox' name='Manager'>
+                <label for='Manager'>Manager</label>
+                <input type='checkbox' name='Admin'>
+                <label for='Admin'>Admin</label>";
+
         }
         echo "
                     <input type='submit' value='Valider' formaction=${url}>

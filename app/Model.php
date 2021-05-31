@@ -5,7 +5,7 @@ abstract class Model{
     private $host = "localhost";
     private $db_name = "cubes";
     private $username = "root";
-    private $password = "";
+    private $password = "root";
 
     protected $bdd;
 

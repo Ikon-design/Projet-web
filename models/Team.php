@@ -23,14 +23,5 @@ class Team extends Model{
         $query->execute();
     }
 
-    public function edit($id)
-    {
-        $player = $_POST["player"] ? 1 : 0;
-        $manager = $_POST["manager"] ? 1 : 0;
-        $admin = $_POST["admin"] ? 1 : 0;
-        $sql = "UPDATE users SET users.Player = ${player}, users.Admin = ${admin}, users.Manager = ${manager} WHERE UserID =".$id;
-        $query = $this->bdd->prepare($sql);
-        $query->execute();
 
-    }
 }

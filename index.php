@@ -32,15 +32,9 @@
          echo "La page demandée n'existe pas";
      }}
  }else{
-     if (!isset($_SESSION['UserID'])){
-         include (ROOT.'controllers/Logins.php');
-         $controller = new Logins();
-         $controller->index();
-     }else {
          include(ROOT . 'controllers/Main.php');
          $controller = new Main();
          $controller->index();
-     }
  }
 
  // indexView();

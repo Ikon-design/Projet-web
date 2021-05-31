@@ -16,6 +16,14 @@ class BackOffice extends Model{
         return $res;
     }
 
+    public function getUsers(){
+        $sql = "SELECT Pseudo, UserID FROM users";
+        $query = $this->bdd->prepare($sql);
+        $query->execute();
+        $res = $query->fetchAll();
+        return $res;
+    }
+
     public function getArticlesUser($id){
         $sql = "SELECT * FROM articles INNER JOIN users ON articles.UserID = users.UserID WHERE articles.UserID =". $id;
         $query = $this->bdd->prepare($sql);
@@ -49,14 +57,21 @@ class BackOffice extends Model{
         $res = $query->fetchAll();
         return $res;
     }
+    //public function edit($id){
+    //    $pseudo = "'".$_POST['Pseudo']."'";
+    //    $Fname = "'".$_POST['Fname']."'";
+    //    $Lname = "'".$_POST['Lname']."'";
+    //    $Mail = "'".$_POST['Mail']."'";
+    //    $CharacterID = $_POST['CharacterID'];
+    //    $sql = "UPDATE users SET Pseudo = ${pseudo} , Fname = ${Fname} , Lname = ${Lname} , Mail = ${Mail}, CharacterID = ${CharacterID} WHERE users.UserID = ".$id;
+    //    $query = $this->bdd->prepare($sql);
+    //    $res = $query->execute();
+    //}
     public function edit($id){
-        $pseudo = "'".$_POST['Pseudo']."'";
-        $Fname = "'".$_POST['Fname']."'";
-        $Lname = "'".$_POST['Lname']."'";
-        $Mail = "'".$_POST['Mail']."'";
-        $CharacterID = $_POST['CharacterID'];
-        $sql = "UPDATE users SET Pseudo = ${pseudo} , Fname = ${Fname} , Lname = ${Lname} , Mail = ${Mail}, CharacterID = ${CharacterID} WHERE users.UserID = ".$id;
+        $sql = "UPDATE users SET Player = :player, Manager = :manager, Admin = :admin";
         $query = $this->bdd->prepare($sql);
-        $res = $query->execute();
+        $query->execute();
+        $res = $query->fetch();
+        return $res;
     }
 }

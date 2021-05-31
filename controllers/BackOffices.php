@@ -9,15 +9,16 @@ class BackOffices extends Controller {
         $getArticlesUser = $this->BackOffice->getArticlesUser($_SESSION['UserID']);
         $getTeam = $this->BackOffice->getTeam();
         $getCharacters = $this->BackOffice->getCharacters();
+        $getUsers = $this->BackOffice->getUsers();
         foreach ($getArticlesUser as $key => $article){
             $getArticlesUser[$key]['lastComment'] = $this->BackOffice->getLastArticleComment($article['ArticleID']);
         }
-        $this->render('index', compact('getUser', 'getArticlesUser', 'getTeam', 'getCharacters'));
+        $this->render('index', compact('getUser', 'getArticlesUser', 'getTeam', 'getCharacters', 'getUsers'));
     }
 
     public function edit($id){
         $this->loadModel("BackOffice");
         $updateUser = $this->BackOffice->edit($id);
-        header("Location: /backOffices/index/11");
+        header("Location: /backOffices");
     }
 }
