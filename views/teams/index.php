@@ -1,7 +1,7 @@
 <?php $title = 'OverWatch | Team Cube'; ?>
 
-<?php ob_start(); var_dump($_POST);?>
-    <main class="main-team">
+<?php ob_start(); ?>
+    <main class="main-team desktop-margin">
         <?php
         foreach ($getTeam as $usersTeam){
             //var_dump($getTeam);

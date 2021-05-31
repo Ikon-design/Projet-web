@@ -14,11 +14,28 @@ Class css globales
     align-items: center;
 }
 h2{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Montserrat;
     font-size: 1.5rem;
-    text-transform: uppercase;
+
 }
 h3{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Montserrat;
     font-size: 1.25rem;
+
+}
+h4{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Montserrat;
+    font-size: 1rem;
+
 }
 .margin-destock{
     margin: 0 140px;
@@ -37,6 +54,77 @@ h3{
 body{
     background-color: #fafafa;
     height: 100vh;
+}
+.desktop-margin{
+    margin: 33px 7%;
+}
+.button{
+    cursor: pointer;
+    justify-self: center;
+    align-self: center;
+    border: #FF8900 1px solid;
+    border-radius: 5px;
+    padding: 9px 16px;
+    font-family: Montserrat;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #FF8900;
+}
+:hover.button{
+    background-color: rgba(255, 137, 0, 0.05);
+}
+.circulare-button{
+    cursor: pointer;
+    border: #FF8900 1px solid;
+    border-radius: 25px;
+    padding: 3px 3px;
+    min-height: 30px;
+    min-width: 30px;
+    max-height: 30px;
+    max-width: 30px;
+    color: #FF8900;
+}
+:hover.circulare-button{
+    background-color: rgba(255, 137, 0, 0.05);
+}
+.HEAL{
+    font-family: Montserrat;
+    color: white;
+    font-weight: 700;
+    padding: 6px 10px;
+    background-image: url("");
+    background: #10CB50;
+}
+.TANK{
+    font-family: Montserrat;
+    color: white;
+    font-weight: 700;
+    padding: 6px 10px;
+    background-image: url("");
+    background: #cb6110;
+}
+.DPS{
+    font-family: Montserrat;
+    color: white;
+    font-weight: 700;
+    padding: 6px 10px;
+    background-image: url("");
+    background: #bb0b2e;
+}
+p{
+    font-family: Raleway;
+}
+.more{
+    font-family: Montserrat;
+    text-decoration: none;
+    font-size: 1rem;
+    padding-top: 10px;
+    font-weight: 600;
+    color: #FF8900;
+}
+.circulare-button img{
+    width: 17px;
+    margin: auto;
 }
 /*
 Class news
@@ -96,8 +184,7 @@ Class teams
  */
 
 .team{
-    height: 100vh;
-    background-color: chartreuse;
+    background-color: white;
     justify-content: space-between;
 }
 
@@ -200,9 +287,6 @@ Class css articles
         margin: 0 0 8px 30px;
     }
 }
-
-
-
 * {
     box-sizing: border-box;
 }
@@ -210,203 +294,191 @@ Class css articles
 /*********** CSS OF THE BACKOFFICE ***********/
 /*********** CSS OF THE BACKOFFICE ***********/
 
-.main-backoffice {
-    display:flex;
-    flex-direction: column;
-    margin:auto;
-}
-.iconCharacter{
-    border-radius: 50px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
-}
-.profilpic {
-    width:50px;
-    border-radius: 50%;
-    margin:auto;
-}
-
-.main-backoffice {
-    display:flex;
-    margin:0;
-    box-sizing: border-box;
-}
-
-.container {
-    margin:0 auto;
-    display:flex;
-    flex-direction: column;
-    border: 1px solid black;
-    width:80%;
-}
-
-
-.infouser {
-    display: flex;
+.main-backoffice{
+    margin-top: 0;
+    width: auto;
     justify-content: space-between;
-    margin:15px;
+    background-color: white;
+}
+.img-user img{
+    height: 122px;
+    width: 122px;
+    border-radius: 122px;
+    background-color: #C5C5C5;
+    object-fit: contain;
 }
 
-.infouser a {
-    text-decoration: none;
-    font-size:1.2em;
+.container-info-user h3, .container-info-user h2{
+    font-family: Montserrat;
+}
+.container-info-user h2{
+    font-size: 30px;
     font-weight: 700;
-    margin-right:20px;
 }
-
-.infoperso {
-    display: flex;
-    justify-content: space-around;
+.info-user{
+    margin-left: 15px;
+    justify-content: space-evenly;
+    color: #4A4C4E;
+    letter-spacing: .2px;
 }
-
-.infoperso div {
-    display: flex;
-    flex-direction: column;
+.name{
+    font-size: 22px;
 }
-
-.infoperso + div {
-    display: flex;
-    justify-content: space-around;
-}
-
-.team-members {
-    box-sizing: border-box;
-    display:flex;
-    justify-content: space-between;
+.container-character-user{
     align-items: center;
-    border: 1px solid black;
-    width: 100%;
-    margin: auto;
+    flex-grow: 2;
+    justify-content: space-around;
 }
-
-.team-members i {
-    border:1px solid black;
-    border-radius: 100%;
-    padding:10px;
-    font-size:1.5em;
+.container-character-user img{
+    background-color: #C5C5C5;
+    border-radius: 122px;
+    width: 53px;
+    height: 53px;
+    object-fit: cover;
 }
-
-.list-user-pic {
-    width:25%;
-    align-self: center;
-    text-align: center;
+.container-character-user h3{
+    font-family: Montserrat;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 22px;
 }
-
-.list-user-div {
-    border:1px solid black;
+.left-block-container, .right-block-container{
+    width: 50%;
+    overflow-x: hidden;
+    border-left: .5px solid #f1f1f1;
+    border-right: .5px solid #f1f1f1;
+}
+.team-members-container{
+    align-items: center;
     justify-content: space-between;
+}
+.team-members-container h2{
+    font-family: Montserrat;
+    font-weight: 500;
+}
+.team-mate-pics{
+    border-radius: 12px;
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: #C5C5C5;
+}
+.list-user-div{
+    align-items: center;
+    justify-content: space-between;
+}
+.team-mate-info{
+    margin-left: 10px;
+    width: 45%;
+}
+.team-mate-info h3{
+    font-family: Montserrat;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+    font-size: 22px;
+}
+.team-mate-character{
+    flex-grow: 1.5;
+}
+.team-mate-character img{
+    background-color: #C5C5C5;
+    border-radius: 122px;
+    width: 53px;
+    height: 53px;
+    object-fit: cover;
+}
+.team-mate-character div{
+    justify-content: center;
+    padding-left: 10px;
+}
+.team-mate-character div h3{
+    font-weight: 700;
+    text-transform: uppercase;
 }
 .user-type{
+    background-color: #FF8900;
+    border-radius: 14px 14px 0px 0px;
+    padding: 3px 16px;
     transform: rotate(270deg);
-    width: 16px;
-    text-align: center;
+}
+.my-messages{
+    font-family: Montserrat;
+    color: #FF8900;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.edit-delete a{
+    margin-left: 15px;
+    justify-content: space-between;
+}
+.author-article{
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+.circulare-button-container {
+    flex-grow: 2;
     align-self: flex-end;
+    justify-content: flex-end;
+    padding: 0 5px;
 }
-
-.iconprofilpic {
-    width:70%;
+.circulare-button-container a{
+    margin-left: 15px;
 }
-
-.user-info {
-    display:flex;
-    justify-content: space-between;
+.author-article-items{
+    align-items: flex-end;
 }
+@media screen and (max-width: 1300px){
+     .team-mate-pics{
+         display: none;
+     }
+    .img-user{
+        display: none;
+    }
+    .author-article-items{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .author-article-items h4{
+        margin: 0;
+    }
 
-.favcharacter img {
-    width:40px;
 }
-
-.edit-delete {
-    align-self: center;
-    margin:20px;
-}
-
-.edit-delete i {
-    margin:10px;
-}
-
-.post-container {
-    width:80%;
-    border:1px solid black;
-}
-
-.post h2 {
-    margin-left:30px;
-}
-
-.post {
-    display:flex;
-    justify-content: space-between;
-    border:1px solid black;
-}
-
-.post-title {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.post-date {
-    align-items: center;
-}
-
-.post-edit-delete {
-    align-self: center;
-    width:30%;
-}
-
-.post-edit-delete i {
-    font-size:2.5em;
-    margin:0 35px;
-}
-
-
-/*********** CSS OF THE TEAM PAGE ***********/
-/*********** CSS OF THE TEAM PAGE ***********/
-
-.main-team {
-    display:flex;
-    flex-direction: column;
-    width:100%;
-    margin:auto;
-}
-
-.main-team h1 {
-    text-align: center;
-}
-
-.container-team {
-    width:80%;
-    margin:30px auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.member {
-
-    display:flex;
-    border:1px solid black;
-    align-items: center;
-}
-
-.member div:first-child {
-    width:35%;
-}
-
-.team-profilpic {
-    width:50px;
-    border-radius: 50%;
-    margin:10px;
-}
-
-.team-iconperso {
-    width:35px;
-}
-
-.team-favcharac {
-    display:flex;
-    justify-content: space-around;
-    margin:10px;
+@media screen and (max-width: 840px){
+    .main-backoffice{
+        flex-direction: column;
+        margin: 0;
+    }
+    .left-block-container, .right-block-container{
+        width: 100%;
+    }
+    .container-info-user{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+    .team-mate-pics{
+        display: none
+    }
+    .img-user{
+        display: flex;
+    }
+    .team-mate-info{
+        margin: 0;
+    }
+    .more{
+        margin: 0px;
+    }
+    .author-article{
+        flex-direction: row;
+    }
+    .author-article-items{
+        flex-direction: column;
+    }
+    .iconCharacter{
+        display: none;
+    }
 }
 
 /*********** CSS OF THE CHARATERS ***********/
@@ -510,28 +582,6 @@ Class css articles
     height: 100%;
     justify-content: center;
 }
-@media screen and (min-width: 1024px) {
-
-    /*********** CSS OF THE BACKOFFICE ***********/
-    /*********** CSS OF THE BACKOFFICE ***********/
-    .main-backoffice {
-        flex-direction: row;
-    }
-    .container {
-        display:block;
-    }
-
-    /*********** CSS OF THE TEAM ***********/
-    /*********** CSS OF THE TEAM ***********/
-
-    .container-team {
-        flex-direction:row;
-        justify-content: center;
-    }
-
-    .member {
-        width:50%;
-    }
 
 
     /*********** CSS OF THE CHARACTERS ***********/
@@ -609,5 +659,3 @@ Class css articles
         width:100%;
 
     }
-
-}

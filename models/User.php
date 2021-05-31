@@ -8,10 +8,13 @@ class User extends Model{
         $this->table = "users";
     }
     public function editUserTeam(){
-            $player = $_POST["player"] ? 1 : 0;
-            $manager = $_POST["manager"] ? 1 : 0;
-            $admin = $_POST["admin"] ? 1 : 0;
-            $sql = "UPDATE users SET users.Player = ${player}, users.Admin = ${admin}, users.Manager = ${manager} WHERE UserID =".$id;
+        var_dump($_POST);
+            $id = $_POST["UsersID"];
+            $character = $_POST["CharacterID"];
+            $player = isset($_POST["player"]) ? 1 : 0;
+            $manager = isset($_POST["manager"]) ? 1 : 0;
+            $admin = isset($_POST["admin"]) ? 1 : 0;
+            $sql = "UPDATE users SET users.Player = ${player}, users.Admin = ${admin}, users.Manager = ${manager}, CharacterID = ${character} WHERE UserID =".$id;
             $query = $this->bdd->prepare($sql);
             $query->execute();
     }

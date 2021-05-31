@@ -1,68 +1,62 @@
 <?php $title = "Page de profil" ?>
 
-<?php ob_start(); var_dump($_POST);?>
-<main class="main-backoffice">
-    <div class="container">
-        <div class="infouser">
-            <?php echo "<h2>${getUser['Pseudo']}</h2>";?>
-            <a onclick="ChangeInformation()">Modifier mes informations</a>
-        </div>
-        <div class="infoperso">
-            <div>
+<?php ob_start();?>
+<main class="main-backoffice desktop-margin display-flex">
+    <div class="left-block-container">
+        <div class="display-flex flex-direction-column globale-padding">
+        <div class="container-info-user display-flex ">
+            <div class="img-user">
                 <img src="<?php if($getUser['Image'] == NULL){ echo "/public/img/account.svg";} else { echo "${getUser['Image']}";} ?>" alt="profil picture of user" class="profilpic">
             </div>
-            <div>
+            <div class="info-user display-flex flex-direction-column">
                 <div>
-                    <?php echo "<h3>${getUser['Lname']} - ${getUser['Fname']}</h3>"; ?>
+                    <?php echo "<h3 class='name'>${getUser['Lname']} ${getUser['Fname']}</h3>
+                    <h2>${getUser['Pseudo']}</h2>";?>
                 </div>
-                <div>
-                    <?php echo "<h3>${getUser['Mail']}</h3>"; ?>
-                </div>
-
+                <?php echo "<h3>${getUser['Mail']}</h3>"; ?>
+            </div>
+            <div class="container-character-user display-flex flex-direction-column">
+                <?php echo "
+                <img src=${getUser['Icon']}>
+                <h3>${getUser['Name']}</h3>
+                <h4 class='${getUser['Type']}'>${getUser['Type']}</h4>
+                "?>
             </div>
         </div>
-        <div>
-            <?php echo "<h3>${getUser['Type']}</h3>
-            <h3>${getUser['Name']}</h3>" ?>
+        <a class="button" onclick='ChangeInformation()'>Modifier</a>
         </div>
+        <div class="divider"></div>
         <?php if($getUser['Admin'] == 1 || $getUser['Player'] == 1 || $getUser['Player'] == 1){
             echo '           
-                <div class="team-members">
-                        <h2>Team members</h2>
-                        <a onclick="addmember()" class="fas fa-plus"><img src="/public/img/plus.svg"></a>
-                 </div>';
+                <div class="team-members-container display-flex globale-padding">
+                        <h2>Membres de l\'équipe</h2>
+                        <a class="circulare-button display-flex" onclick="addmember()" class="fas fa-plus"><img src="/public/img/plus.svg"></a>
+                 </div>
+                 <div class="divider"></div>';
             foreach ($getTeam as $usersTeam){
                 echo "
-            <div class='list-user-div display-flex'>
-            <div class='list-user-pic'>
-                <img src='src/profilpic.jpg' alt='icon profil pic' class='iconprofilpic'>
-            </div>
-            <div class='user-info globale-padding'>   
-                <div class='favcharacter display-flex flex-direction-column'>
-                    <img class='iconCharacter' src='${usersTeam['Icon']}'>
-                    <h3>${usersTeam['Name']}</h3>
-                </div>
-            
-                <div>
-                    <h4>${usersTeam['Fname']} ${usersTeam['Lname']}</h4>
+            <div class='list-user-div display-flex globale-padding'>
+                <img class='team-mate-pics' src=";if ($usersTeam['Image'] == NULL){ echo "/public/img/account.svg";} else { echo "${$usersTeam['Image']}";} echo" alt='icon profil pic' class='iconprofilpic'>
+                <div class='team-mate-info'>
+                    <h4>${usersTeam['Lname']} ${usersTeam['Fname']}</h4>
                     <h3>${usersTeam['Pseudo']}</h3>
                     <h4>${usersTeam['Mail']}</h4>
                 </div>
-             
-                <div class='edit-delete'>
-                    <a onclick='editUser( ${usersTeam['UserID']} )'><img src='/public/img/pencil.svg' class='fas fa-edit'></a>
-                    <a href='/teams/delete/${usersTeam['UserID']}'><img src='/public/img/delete.svg' class='fas fa-ban'></a>
+                 <div class='team-mate-character display-flex'>
+                    <img class='iconCharacter' src='${usersTeam['Icon']}'>
+                    <div class='display-flex flex-direction-column'>
+                        <h3>${usersTeam['Name']}</h3>
+                        <h6 class='${usersTeam['Type']}'>${usersTeam['Type']}</h6>
+                    </div>
+                   
                 </div>
-            </div>
-            <div class='display-flex'>";
-                if ($usersTeam["Player"] == 1 ){
-                    echo "<div class='user-type'>Joueur</div>";
-                } else if ($usersTeam["Manager"] == 1){
-                    echo "<div class='user-type'>Manageur</div>";
-                }
+                <div class='edit-delete display-flex'>
+                    <a class='circulare-button display-flex' onclick='editUser( ${usersTeam['UserID']} )'><img src='/public/img/pencil.svg' class='fas fa-edit'></a>
+                    <a class='circulare-button display-flex' href='/teams/delete/${usersTeam['UserID']}'><img src='/public/img/delete.svg' class='fas fa-ban'></a>
+               </div>
+            ";
                 $url2 = "/teams/edit/${usersTeam['UserID']}";
                 echo "
-            </div>
             <dialog id='edit-dialog${usersTeam['UserID']}' class='edit-dialog'>
                 <form method='post'>
                     <label for='ad'>Joueur</label>
@@ -74,12 +68,14 @@
                     <input type='submit' value='Valider' formaction=${url2}>
                 </form>
             </dialog>
-        </div>";}
+        </div>
+        <div class='divider'></div>";}
+
         } ?>
     </div>
-    <div class="post-container">
-        <h2>Postes</h2>
-
+    <div class="right-block-container ">
+        <h2 class="my-messages globale-padding">Mes messages</h2>
+        <div class="divider"></div>
         <?php
         foreach ($getArticlesUser as $articles){
             $date = $articles['Date'];
@@ -94,12 +90,17 @@
             }
 
             echo"
-            <div class='post display-flex flex-direction-column'>
+            <div class='post display-flex flex-direction-column globale-padding'>
             <div class='display-flex author-article'>
+            <div class='display-flex author-article-items'>
                 <h3 class='article-title'>${articles["Title"]}</h3>
                 <h4 class='article-author'>De ${articles["Pseudo"]}, le $formatedDate</h4>
-                <a class='edit-button' href='/articles/edit/${articles["ArticleID"]}'><img src='/public/img/pencil.svg'></a>
-                <a class='delete-button' href='/articles/delete/${articles["ArticleID"]}'><img src='/public/img/delete.svg'></a>
+            </div>
+
+                <div class='circulare-button-container display-flex'>
+                    <a class='edit-button circulare-button display-flex' href='/articles/edit/${articles["ArticleID"]}'><img src='/public/img/pencil.svg'></a>
+                    <a class='delete-button circulare-button display-flex' href='/articles/delete/${articles["ArticleID"]}'><img src='/public/img/delete.svg'></a>
+                </div>
             </div>
             <div class='post-date'>
             <p>$content</p>";
@@ -118,9 +119,10 @@
                 <i class='fas fa-ban'></i>
             </div>
             </div>
-            
+            <div class='divider'></div>
         ";}
         $url = "/backOffices/edit/${getUser['UserID']}";
+        $url2 = "/users/edit";
         echo "<dialog id='ChangeInformation'>
                 <form method='post'>
                     <input type='text' name='Pseudo' value='${getUser["Pseudo"]}'>
@@ -150,17 +152,17 @@
         }
         if ($getUser["Admin"] == 1){
             echo "
-                <input type='checkbox' name='Joueur'>
+                <input type='checkbox' name='player' value='1' checked='false'>
                 <label for='Joueur'>Joueur</label>
-                <input type='checkbox' name='Manager'>
+                <input type='checkbox' name='manager' value='1'>
                 <label for='Manager'>Manager</label>
-                <input type='checkbox' name='Admin'>
+                <input type='checkbox' name='admin' value='1' >
                 <label for='Admin'>Admin</label>";
 
         }
         echo "
-                    <input type='submit' value='Valider' formaction=${url}>
-                    <button onclick='cancelChange()'>Annuler</button>
+                    <input type='submit' value='Valider' formaction=${url2}>
+                    <button type='button' onclick='cancelChange()'>Annuler</button>
                 </form>
             </dialog>
             ";

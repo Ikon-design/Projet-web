@@ -23,5 +23,4 @@ class Team extends Model{
         $query->execute();
     }
 
-
 }
