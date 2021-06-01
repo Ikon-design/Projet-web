@@ -9,7 +9,7 @@ class Team extends Model{
     }
     public function getTeam()
     {
-        $sql = 'SELECT * FROM users LEFT JOIN characters ON users.CharacterID = characters.CharacterID WHERE Manager = 1 OR Player = 1';
+        $sql = 'SELECT * FROM users LEFT JOIN characters ON users.CharacterID = characters.CharacterID JOIN class ON characters.ClassID = class.ClassID WHERE Manager = 1 OR Player = 1';
         $query = $this->bdd->prepare($sql);
         $query->execute();
         $res = $query->fetchALl();

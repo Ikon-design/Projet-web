@@ -28,7 +28,7 @@
             </div>
             <p class=''>$content</p>";
         if (strlen($article['Content']) > 200){
-            echo"<a class='more' methods='post' href='/articles/read/${article['ArticleID']}'>Lire la suite</a>";
+            echo"<a class='more globale-padding' methods='post' href='/articles/read/${article['ArticleID']}'>Lire la suite</a>";
         }
         echo "<div class='divider'></div>";}
 }?>
@@ -57,7 +57,7 @@
             </div>
             <p>$content</p>";
         if (strlen($article['Content']) > 200){
-            echo"<a class='more' href='/'>Lire la suite</a>";
+            echo"<a class='more globale-padding' href='/'>Lire la suite</a>";
         }
         echo "<div class='divider'></div>";}
 }?>

@@ -1,40 +1,34 @@
 <?php $title = 'OverWatch | Team Cube'; ?>
 
 <?php ob_start(); ?>
-    <main class="main-team desktop-margin">
+    <main class="main-team desktop-margin display-flex flex-direction-column">
+        <div class="team-members-container display-flex globale-padding">
+            <h2>Membres de l'équipe</h2>
+            <a class="circulare-button display-flex" onclick="addmember()" class="fas fa-plus"><img src="/public/img/plus.svg"></a>
+        </div>
         <?php
         foreach ($getTeam as $usersTeam){
             //var_dump($getTeam);
             echo "
-            <div class='list-user-div display-flex'>
-            <div class='list-user-pic'>
-                <img src='src/profilpic.jpg' alt='icon profil pic' class='iconprofilpic'>
-            </div>
-            <div class='user-info globale-padding'>   
-                <div class='favcharacter display-flex flex-direction-column'>
-                    <img class='iconCharacter' src='${usersTeam['Icon']}'>
-                    <h3>${usersTeam['Name']}</h3>
-                </div>
-            
-                <div>
-                    <h4>${usersTeam['Fname']} ${usersTeam['Lname']}</h4>
+             <div class='list-user-div team-mate display-flex globale-padding'>
+                <img class='team-mate-pics' src=";if ($usersTeam['Image'] == NULL){ echo "/public/img/account.svg";} else { echo "${$usersTeam['Image']}";} echo" alt='icon profil pic' class='iconprofilpic'>
+                <div class='team-mate-info'>
+                    <h4>${usersTeam['Lname']} ${usersTeam['Fname']}</h4>
                     <h3>${usersTeam['Pseudo']}</h3>
                     <h4>${usersTeam['Mail']}</h4>
                 </div>
-                
-                <div class='edit-delete'>
-                    <a onclick='editUser(${usersTeam['UserID']})'><img src='/public/img/pencil.svg' class='fas fa-edit'></a>
-                    <a href='/teams/delete/${usersTeam['UserID']}'><img src='/public/img/delete.svg' class='fas fa-ban'></a>
+                 <div class='team-mate-character display-flex'>
+                    <img class='iconCharacter' src='${usersTeam['Icon']}'>
+                    <div class='display-flex flex-direction-column'>
+                        <h3>${usersTeam['Name']}</h3>
+                        <h6 class='${usersTeam['Type']}'>${usersTeam['Type']}</h6>
+                    </div>
+                   
                 </div>
-            </div>
-            <div class='display-flex'>";
-            if ($usersTeam["Player"] == 1 ){
-                echo "<div class='user-type'>Joueur</div>";
-            } else if ($usersTeam["Manager"] == 1){
-                echo "<div class='user-type'>Manageur</div>";
-            }
-            $url = "/teams/edit/${usersTeam['UserID']}";
-            echo "
+                <div class='edit-delete display-flex'>
+                    <a class='circulare-button display-flex' onclick='editUser( ${usersTeam['UserID']} )'><img src='/public/img/pencil.svg' class='fas fa-edit'></a>
+                    <a class='circulare-button display-flex' href='/teams/delete/${usersTeam['UserID']}'><img src='/public/img/delete.svg' class='fas fa-ban'></a>
+               </div> 
             </div>
         </div>
         <dialog id='edit-dialog${usersTeam['UserID']}' class='edit-dialog'>

@@ -53,7 +53,7 @@
                 <div class='edit-delete display-flex'>
                     <a class='circulare-button display-flex' onclick='editUser( ${usersTeam['UserID']} )'><img src='/public/img/pencil.svg' class='fas fa-edit'></a>
                     <a class='circulare-button display-flex' href='/teams/delete/${usersTeam['UserID']}'><img src='/public/img/delete.svg' class='fas fa-ban'></a>
-               </div>
+               </div>   
             ";
                 $url2 = "/teams/edit/${usersTeam['UserID']}";
                 echo "

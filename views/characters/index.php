@@ -3,6 +3,13 @@
 <?php ob_start();?>
     <div class="characters-content display-flex flex-direction-column">
         <div class="main-characters-mobile display-flex flex-direction-column globale-padding">
+            <div>
+                <?php
+                    foreach ($characters as $allCharacter){
+                        echo "<a><img src='${$allCharacter['Icon']}'></a>";
+                    }
+                ?>
+            </div>
             <select id="selectCharacter" class="selectCharacter" onchange="setUrl()">
                 <?php
                 if (isset($characters)) {
