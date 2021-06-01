@@ -1,20 +1,20 @@
 <?php $title = 'Team - Cube'; ?>
 
-<?php ob_start(); var_dump($_SESSION);?>
+<?php ob_start(); var_dump($getTank);?>
 
 <div class="display-flex news-container">
     <div class="left-news">
-        <h1></h1>
-        <p></p>
+        <?php echo "<h1>${lastArticle['Title']}</h1>
+        <p>${lastArticle['Content']}</p>"?>
     </div>
     <div class="display-flex flex-direction-column right-news-container">
         <div class="right-news">
-            <h3></h3>
-            <p></p>
+            <?php echo "<h3>${llastArticle['Title']}</h3>
+            <p>${llastArticle['Content']}</p>"?>
         </div>
         <div class="right-news1">
-            <h3></h3>
-            <p></p>
+            <?php echo "<h3>${lllastArticle['Title']}</h3>
+            <p>${lllastArticle['Content']}</p>"?>
         </div>
     </div>
 </div>
@@ -51,37 +51,27 @@
 
 <div class="team display-flex flex-direction-column align-items-center">
     <h2>L'équipe</h2>
-
-    <div class="team-container">
-        <div class="team-item display-flex">
-            <div class="team-item-left">
-                <img src="" class="team-img-left">
-            </div>
-            <h3>Tank</h3>
-            <div class="team-item-right">
-                <img src="">
-            </div>
+    <?php
+    foreach ($getTank as $getTank)
+        echo "
+    <div class='list-user-div team-mate display-flex globale-padding'>
+        <img class='team-mate-pics' src=";if ($getTank['Image'] == NULL){ echo "/public/img/account.svg";} else { echo "${$getTank['Image']}";} echo" alt='icon profil pic' class='iconprofilpic'>
+        <div class='team-mate-info'>
+            <h4>${getTank['Lname']} ${getTank['Fname']}</h4>
+            <h3>${getTank['Pseudo']}</h3>
+            <h4>${getTank['Mail']}</h4>
         </div>
+        <div class='team-mate-character display-flex'>
+            <img class='iconCharacter' src='${getTank['Icon']}'>
+            <div class='display-flex flex-direction-column'>
+                <h3>${getTank['Name']}</h3>
+                <h6 class='${getTank['Type']}'>${getTank['Type']}</h6>
+            </div>
 
-        <div class="team-item display-flex">
-            <div class="team-item-left">
-                <img src="">
-            </div>
-            <h3>Dps</h3>
-            <div class="team-item-right">
-                <img src="">
-            </div>
         </div>
-
-        <div class="team-item display-flex">
-            <div class="team-item-left">
-                <img src="">
-            </div>
-            <h3>Heal</h3>
-            <div class="team-item-right">
-                <img src="">
-            </div>
-        </div>
+    </div>
+    ";?>
+</div>
     </div>
 
 </div>

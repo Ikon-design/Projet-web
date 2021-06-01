@@ -94,6 +94,7 @@ body{
     padding: 6px 10px;
     background-image: url("");
     background: #10CB50;
+    width: fit-content;
 }
 .TANK{
     font-family: Montserrat;
@@ -102,6 +103,7 @@ body{
     padding: 6px 10px;
     background-image: url("");
     background: #cb6110;
+    width: fit-content;
 }
 .DPS{
     font-family: Montserrat;
@@ -110,6 +112,7 @@ body{
     padding: 6px 10px;
     background-image: url("");
     background: #bb0b2e;
+    width: fit-content;
 }
 p{
     font-family: Raleway;
@@ -186,6 +189,7 @@ Class teams
     flex-wrap: wrap;
     background-color: white;
     margin-top: 0;
+    flex-direction: row;
 }
 .team-mate{
     width: 50%;
@@ -339,6 +343,7 @@ Class css articles
     border-right: .5px solid #f1f1f1;
 }
 .team-members-container{
+    width: 100%;
     align-items: center;
     justify-content: space-between;
 }
@@ -473,10 +478,122 @@ Class css articles
 
 /*********** CSS OF THE CHARATERS ***********/
 /*********** CSS OF THE CHARATERS ***********/
-
+.main-character{
+    height: calc( 100vh - 56.06px);
+    background-size: cover;
+    background-image: url('/public/img/bg.jpeg');
+}
+.characters-content{
+    height: 100%;
+    justify-content: space-between;
+}
+.icon-character-container{
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
 .selectCharacter{
     display: none;
 }
-@media screen {
+video{
+    width: 100%;
+}
+.div-skill{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 1;
+}
+.skills-container{
+    align-items: flex-end;
+}
+.liste-skills, .p-skill, .skill-select{
+    color: white;
+    background-color: #304662;
+}
+.skill-select{
+    width: 95%;
+    justify-self: center;
+    padding: 10px 15px;
+    border: none;
+}
+.p-skill{
+    z-index: 5;
+}
+.skill-icon{
+    height: 35px;
+    object-fit: cover;
+}
+.main-characters-mobile{
+    align-items: flex-end;
+    align-self: flex-end;
+}
+.characters{
+    padding: 5px;
+    flex-grow: 0;
+}
+.right-block-character, .character-info{
+    width: 50%;
+}
+.right-block-character{
+    justify-content: space-between;
+}
+.character-info{
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    justify-content: center;
+}
+.h2-character{
+    background-color: #FF8900;
+    width: fit-content;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    padding: 5px 16px;
+}
+.p-character{
+    align-self: flex-end;
+    color: white;
+    width: 50%;
+    background-color: rgba(0, 0, 0, .3);
+}
+.container-character-info{
+    width: 50%;
+    align-self: flex-end;
+}
+.liste-skills{
+    width: 100%;
+}
+@media screen and (max-width: 840px){
+    .characters-content{
+        flex-direction: column;
+    }
+    .right-block-character, .character-info{
+        width: 100%;
+    }
+    .main-characters-mobile{
+        display: none;
+    }
+    .selectCharacter{
+        display: flex;
+        height: 43px;
+        padding: 15px;
+        border: none;
+        border-radius: 4px;
+    }
+    .character-info{
+        height: 100%;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center top;
+    }
+    .p-character{
+        width: 100%;
+    }
+    .container-character-info{
+        width: 100%;
+    }
 
 }

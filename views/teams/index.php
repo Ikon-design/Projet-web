@@ -1,6 +1,6 @@
 <?php $title = 'OverWatch | Team Cube'; ?>
 
-<?php ob_start(); ?>
+<?php ob_start(); $url = 0 ?>
     <main class="main-team desktop-margin display-flex flex-direction-column">
         <div class="team-members-container display-flex globale-padding">
             <h2>Membres de l'équipe</h2>

@@ -18,7 +18,7 @@ class Character extends Model{
 
     public function character($id)
     {
-        $sql = "SELECT * FROM ".$this->table." WHERE CharacterID = ".$id;
+        $sql = "SELECT * FROM characters JOIN class ON characters.ClassID = class.ClassID WHERE CharacterID = ".$id;
         $query = $this->bdd->prepare($sql);
         $query->execute();
         return $query->fetch();

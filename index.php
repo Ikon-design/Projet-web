@@ -32,8 +32,8 @@
          echo "La page demandée n'existe pas";
      }}
  }else{
-         include(ROOT . 'controllers/Main.php');
-         $controller = new Main();
+         include(ROOT . 'controllers/Mains.php');
+         $controller = new Mains();
          $controller->index();
  }
 
