@@ -32,4 +32,10 @@ class Articles extends Controller {
         }
         $this->render('edit', compact('article'));
     }
+
+    public function create(){
+        $this->loadModel('Article');
+        $data = $this->Artciel->createArticle();
+        $this->read('create', compact($data));
+    }
 }

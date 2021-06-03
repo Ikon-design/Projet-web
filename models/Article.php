@@ -47,4 +47,15 @@ class Article extends Model{
         $res = $query->execute(array(':title' => $title, ':content' => $content, ':id' => $id));
         var_dump($title, $content, $res, $sql);
     }
+
+    public function createArticle(){
+        $content = htmlspecialchars($_POST['content'], ENT_QUOTES);
+        $title = htmlspecialchars($_POST["title"], ENT_QUOTES);
+        $evenement = $_POST['event'];
+        $article = $_POST['article'];
+        $userID = $_SESSION['UserID'];
+        //$sql = "INSERT INTO articles (Content, Title, Article, Evenement, UserID) VALUES ( $content, $title, $article, $evenement, $userID)";
+        //$query = $this->bdd->prepare($sql);
+        //$query->execute();
+    }
 }

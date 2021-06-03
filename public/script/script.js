@@ -5,23 +5,33 @@ let skill = document.getElementById('skill')
 let description = document.getElementById('description')
 let skillIcon = document.getElementById('skillIcon')
 
-video.children[0].src = localStorage.getItem(0)
-video.load();
-video.play();
+if (video !== null) {
+    video.children[0].src = localStorage.getItem(0)
+    video.load();
+    video.play();
+}
 
-description.innerHTML = sessionStorage.getItem(0)
-skillIcon.src = sessionStorage.getItem('skillIcon0')
+if (description !== null) {
+    description.innerHTML = sessionStorage.getItem(0)
+}
+if (skillIcon !== null) {
+    skillIcon.src = sessionStorage.getItem('skillIcon0')
+}
 
 if ( sessionStorage.getItem('selectedCharacter') === null){
     sessionStorage.setItem('selectedCharacter', selectedOption = 1)
 } else {
-    selectedOption.options[sessionStorage.getItem('selectedCharacter')].defaultSelected = true
+    if(selectedOption !== null){
+        selectedOption.options[sessionStorage.getItem('selectedCharacter')].defaultSelected = true
+    }
 }
 
 if ( sessionStorage.getItem('selectSkill') === null){
     sessionStorage.setItem('selectSkill', 0)
 } else {
-    selectSkill.options[sessionStorage.getItem('selectSkill')].defaultSelected = true
+    if (selectSkill !== null){
+        selectSkill.options[sessionStorage.getItem('selectSkill')].defaultSelected = true
+    }
 }
 
 function setUrl(){
@@ -62,12 +72,27 @@ function cancelChange()
 {
     let dialog2 = document.getElementById('addMember')
     let dialog = document.getElementById('ChangeInformation')
-    dialog.open = false
-    dialog2.open = false
+    let dialog3 = document.getElementById('addArticle')
+    if (dialog !== null) {
+        dialog.open = false
+    }
+    if (dialog2 !== null) {
+        dialog2.open = false
+    }
+    if (dialog3 !== null) {
+        console.log(dialog3.open)
+        dialog3.style.display = 'none'
+        dialog3.open = false
+    }
+    console.log('coucou')
 }
 
 function addmember(){
     let dialog = document.getElementById('addMember')
     dialog.open = true
 }
-
+function addarticle(){
+    let dialog = document.getElementById('addArticle')
+    dialog.open = true
+    dialog.style.display = 'flex'
+}

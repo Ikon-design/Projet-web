@@ -1,7 +1,7 @@
 <?php $title = "Page de profil" ?>
 
 <?php ob_start();?>
-<main class="main-backoffice desktop-margin display-flex">
+<main class="main-backoffice display-flex">
     <div class="left-block-container">
         <div class="display-flex flex-direction-column globale-padding">
         <div class="container-info-user display-flex ">
