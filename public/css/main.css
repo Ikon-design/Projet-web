@@ -466,7 +466,6 @@ Class css articles
     }
 }
 * {
-    z-index: 1;
     box-sizing: border-box;
 }
 
@@ -594,7 +593,6 @@ Class css articles
 }
 .author-article{
     margin-bottom: 10px;
-    justify-content: space-between;
 }
 .circulare-button-container {
     flex-grow: 2;

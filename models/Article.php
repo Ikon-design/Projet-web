@@ -48,14 +48,13 @@ class Article extends Model{
         var_dump($title, $content, $res, $sql);
     }
 
-    public function createArticle(){
+    public function createArticle($article, $evenement){
         $content = htmlspecialchars($_POST['content'], ENT_QUOTES);
         $title = htmlspecialchars($_POST["title"], ENT_QUOTES);
-        $evenement = $_POST['event'];
-        $article = $_POST['article'];
         $userID = $_SESSION['UserID'];
-        //$sql = "INSERT INTO articles (Content, Title, Article, Evenement, UserID) VALUES ( $content, $title, $article, $evenement, $userID)";
-        //$query = $this->bdd->prepare($sql);
-        //$query->execute();
+        $sql = "INSERT INTO articles (ArticleID, Content, Title, Article, Evenement, UserID, Date) VALUES ( NULL , '$content' , '$title' , $article , $evenement , $userID , NOW() )";
+        $query = $this->bdd->prepare($sql);
+        $res = $query->execute();
+        var_dump($sql, $query, $res, $content);
     }
 }

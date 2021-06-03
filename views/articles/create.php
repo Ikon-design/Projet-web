@@ -1,6 +1,6 @@
 <?php $title = "Overwatch | Evenements"; ?>
 
-<?php ob_start(); var_dump($_POST);?>
+<?php ob_start();?>
 
 <?php $content = ob_get_clean(); ?>
 

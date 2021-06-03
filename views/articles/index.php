@@ -3,7 +3,6 @@
 <?php
 ob_start();
 $url = '/articles/create';
-var_dump($_SESSION);
 ?>
 
 <?="
@@ -11,8 +10,10 @@ var_dump($_SESSION);
         <div class='article-container display-flex flex-direction-column'>
             <div class='header-article display-flex globale-margin'>
                 <h2>Articles</h2>
-                <a class='circulare-button display-flex' onclick='addarticle()' class='fas fa-plus'><img src='/public/img/plus.svg'></a>
-                <img src='public/img/menu-down.svg'>
+                <div class='display-flex'>
+                    <a class='circulare-button display-flex' onclick='addarticle()' class='fas fa-plus'><img src='/public/img/plus.svg'></a>
+                    <img src='public/img/menu-down.svg'>
+                </div>
             </div>
             <div class='divider'></div>
 "?>
@@ -40,15 +41,16 @@ var_dump($_SESSION);
 <?="</div>
     <div class='article-container display-flex flex-direction-column'>
         <div class='header-article display-flex globale-margin'>
-            <h2>Événements</h2>
-            <a><img src='public/img/menu-down.svg'></a>
+            <h2>Événements</h2> 
+            <div class='display-flex'>
+                <a class='circulare-button display-flex' onclick='addarticle()' class='fas fa-plus'><img src='/public/img/plus.svg'></a>
+                <img src='public/img/menu-down.svg'>
+            </div>
         </div>
         <div class='divider'></div>
     "?>
 <?php if (isset($getEvent)) {
     foreach ($getEvent as $article){
-        $date = $article['Date'];
-        $formatedDate = date('d m Y', strtotime($date));
         if (strlen($article['Content']) > 200){
             $content = substr($article['Content'], 0, 200)."...";
             $endPoint = strrpos($content, ' ');
@@ -62,7 +64,7 @@ var_dump($_SESSION);
             </div>
             <p>$content</p>";
         if (strlen($article['Content']) > 200){
-            echo"<a class='more globale-padding' href='/'>Lire la suite</a>";
+            echo"<a class='more globale-padding' href='/articles/read/${article['ArticleID']}'>Lire la suite</a>";
         }
         echo "<div class='divider'></div>";}
 }?>

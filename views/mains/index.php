@@ -8,7 +8,7 @@
         <div class='content-news-articles'>
         <div class='line'></div>
         <p>${lastArticle['Content']}</p>";
-            if ($lastArticle['oversize'] == true ){
+            if (isset($lastArticle['oversize']) == true ){
                 echo "<a class='more' href='/articles/read/${lastArticle['ArticleID']}'>Lire la suite</a>";
             }
             ?>
