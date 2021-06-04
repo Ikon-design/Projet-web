@@ -73,7 +73,7 @@ $url = '/articles/create';
             </div>
             <div class='display-flex button-dialog'>
                 <div class='container-dialog-button'>
-                    <input class='dialog-button' type='submit' value='Valider' formaction=${url}>
+                    <input class='dialog-button' type='submit' value='Valider' formaction=<?php echo "$url"; ?>>
                     <button class='dialog-button' type='button' onclick='cancelChange()'>Annuler</button>
                 </div>
             </div>
