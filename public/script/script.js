@@ -59,6 +59,8 @@ function setSkill()
 function editUser($id)
 {
     let dialog = document.getElementById("edit-dialog" + $id)
+    console.log(dialog, $id)
+    dialog.style.display = 'flex'
     dialog.open = true
 }
 
@@ -66,6 +68,7 @@ function ChangeInformation()
 {
     let dialog = document.getElementById('ChangeInformation')
     dialog.open = true
+    dialog.style.display = 'flex'
 }
 
 function cancelChange()
@@ -85,9 +88,13 @@ function cancelChange()
         dialog3.style.display = 'none'
         dialog3.open = false
     }
-    console.log('coucou')
 }
-
+function cancelEditUser($id)
+{
+    let dialog = document.getElementById("edit-dialog" + $id)
+    dialog.style.display = 'none'
+    dialog.open = false
+}
 function addmember(){
     let dialog = document.getElementById('addMember')
     dialog.style.display = "flex"

@@ -4,10 +4,27 @@ class Articles extends Controller {
         $this->loadModel("Article");
         $getArticle = $this->Article->getArticle();
         $getEvent = $this->Article->getEvent();
+
+        foreach ($getArticle as $key => $article) {
+            $formatedDate = date('d m Y', strtotime($article['Date']));
+            $getArticle[$key]['Date'] = $formatedDate;
+
+            if (strlen($article['Content']) > 200){
+                $getArticle[$key]['Content'] = substr($article['Content'], 0, 200)."...";
+                $getArticle[$key]['oversize'] = true;
+            }
+        }
+
         foreach ($getEvent as $key => $article) {
             $formatedDate = date('d m Y', strtotime($article['Date']));
             $getEvent[$key]['Date'] = $formatedDate;
+
+            if (strlen($article['Content']) > 200){
+                $getEvent[$key]['Content'] = substr($article['Content'], 0, 200)."...";
+                $getEvent[$key]['oversize'] = true;
+            }
         }
+
         $me = $this->Article->me();
         $this->render('index', compact('getArticle', 'getEvent', 'me'));
     }

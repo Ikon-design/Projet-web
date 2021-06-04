@@ -4,44 +4,32 @@
 ob_start();
 $url = '/articles/create';
 ?>
-
-<?="
     <div class='article-block display-flex'>
         <div class='article-container display-flex flex-direction-column'>
-            <div class='header-article display-flex globale-margin'>
-                <h2>Articles</h2>
-                <div class='display-flex'>
-                    <a class='circulare-button display-flex' onclick='addarticle()' class='fas fa-plus'><img src='/public/img/plus.svg'></a>
-                   
-                </div>
+        <div class='header-article display-flex globale-margin'>
+            <h2>Articles</h2>
+            <div class='display-flex'>
+                <a class='circulare-button display-flex' onclick='addarticle()' class='fas fa-plus'><img src='/public/img/plus.svg'></a>
             </div>
-            <div class='divider'></div>
-"?>
+        </div>
+    <div class='divider'></div>
 <?php if (isset($getArticle)) {
     foreach ($getArticle as $article){
-        $date = $article['Date'];
-        $formatedDate = date('d m Y', strtotime($date));
-        if (strlen($article['Content']) > 200){
-            $content = substr($article['Content'], 0, 200)."...";
-            $endPoint = strrpos($content, ' ');
-        }else {
-            $content = $article['Content'];
-        }
         echo "
             <div class='display-flex globale-margin author-article'>
                 <h3 class='article-title'>${article['Title']}</h3>
-                <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>";
+                <h4 class='article-author'>De ${article['Pseudo']} le ${article['Date']}.</h4>";
                 if ($me['admin'] == 1 || $me['manager'] == 1 ) {
                     echo "<div class='circulare-button-container display-flex' >
-                    <a class='edit-button circulare-button display-flex' href = '/articles/edit/${article["ArticleID"]}' ><img src = '/public/img/pencil.svg' ></a >
-                    <a class='delete-button circulare-button display-flex' href = '/articles/delete/${article["ArticleID"]}' ><img src = '/public/img/delete.svg' ></a >
+                    <a class='edit-button circulare-button display-flex' href = '/articles/edit/${article["ArticleID"]}' ><img src ='/public/img/pencil.svg' ></a >
+                    <a class='delete-button circulare-button display-flex' href = '/articles/delete/${article["ArticleID"]}' ><img src ='/public/img/delete.svg' ></a >
                 </div>";}
-            echo "</div>
-            <p class=''>$content</p>";
-        if (strlen($article['Content']) > 200){
-            echo"<a class='more globale-padding' methods='post' href='/articles/read/${article['ArticleID']}'>Lire la suite</a>";
-        }
-        echo "<div class='divider'></div>";}
+           echo "</div>
+           <p class=''>${article['Content']}</p>";
+           if ($article['oversize'] == true){
+               echo"<a class='more globale-padding' href='/articles/read/${article["ArticleID"]}'>Lire la suite</a>";
+           }
+           echo"<div class='divider'></div>";}
 }?>
 <?="</div>
     <div class='article-container display-flex flex-direction-column'>
@@ -55,31 +43,24 @@ $url = '/articles/create';
     "?>
 <?php if (isset($getEvent)) {
     foreach ($getEvent as $article){
-        if (strlen($article['Content']) > 200){
-            $content = substr($article['Content'], 0, 200)."...";
-            $endPoint = strrpos($content, ' ');
-        }else {
-            $content = $article['Content'];
-        }
         echo "
             <div class='display-flex globale-margin author-article'>
                 <h3 class='article-title'>${article['Title']}</h3>
-                <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>";
+                <h4 class='article-author'>De ${article['Pseudo']} le ${article['Date']}.</h4>";
                 if ($me['admin'] == 1 || $me['manager'] == 1 ) {
                     echo "<div class='circulare-button-container display-flex' >
                     <a class='edit-button circulare-button display-flex' href = '/articles/edit/${article["ArticleID"]}' ><img src = '/public/img/pencil.svg' ></a >
                     <a class='delete-button circulare-button display-flex' href = '/articles/delete/${article["ArticleID"]}' ><img src = '/public/img/delete.svg' ></a >
                 </div>";}
             echo "</div>
-            <p>$content</p>";
-        if (strlen($article['Content']) > 200){
-            echo"<a class='more globale-padding' href='/articles/read/${article['ArticleID']}'>Lire la suite</a>";
-        }
+            <p>${article['Content']}</p>";
+            if ($article['oversize'] == true){
+               echo"<a class='more globale-padding' href='/articles/read/${article["ArticleID"]}'>Lire la suite</a>";
+           }
         echo "<div class='divider'></div>";}
 }?>
 
-<?="</div>
-    </div>
+</div></div>
     <dialog id='addArticle' class='edit-dialog' open='false'>
         <form method='post'>
             <input type='text' name='title' placeholder='Titre' required>
@@ -98,8 +79,8 @@ $url = '/articles/create';
             </div>
         </form>
     </dialog>
-"?>
+
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require (ROOT.'/views/template.php');
+<?php require (ROOT.'/views/template.php'); ?>

@@ -9,8 +9,14 @@ class Teams extends Controller {
         $getTeam = $this->Team->getTeam();
         $getUsers = $this->Team->getUsers();
         $getcharacters = $this->Team->getcharacters();
+        foreach ($getTeam as $key => $user){
+            $getTeam[$key]['id'] = $key;
+            if ($user['Image'] == NULL || $user['Image'] == null){
+                $getTeam[$key]['Image'] = '/public/img/account.svg';
+            }
+        }
         $me = $this->Team->me();
-        $this->render('index', compact('getTeam', 'getUsers', 'getcharacters'));
+        $this->render('index', compact('getTeam', 'getUsers', 'getcharacters', 'me'));
     }
 
     public function delete($id){
@@ -19,9 +25,11 @@ class Teams extends Controller {
         header("Location: /teams");
     }
 
-    public function edit($id){
+    public function edit(){
         $this->loadModel("Team");
-        $this->Team->editProfil($id);
-        header("Location: /teams");
+        $this->Team->editProfil();
+        $this->render('edit');
+        //header("Location: /teams");
     }
+
 }

@@ -1,6 +1,6 @@
 <?php $title = "Page de profil" ?>
 
-<?php ob_start();?>
+<?php ob_start(); var_dump($me);?>
 <main class="main-backoffice display-flex">
     <div class="left-block-container">
         <div class="display-flex flex-direction-column globale-padding">
@@ -27,16 +27,19 @@
         </div>
         <div class="divider"></div>
         <?php if($getUser['Admin'] == 1 || $getUser['Player'] == 1 || $getUser['Player'] == 1){
-            echo '           
-                <div class="team-members-container display-flex globale-padding">
-                        <h2>Membres de l\'équipe</h2>
-                        <a class="circulare-button display-flex" onclick="addmember()" class="fas fa-plus"><img src="/public/img/plus.svg"></a>
-                 </div>
-                 <div class="divider"></div>';
+            echo "      
+                <div class='team-members-container display-flex globale-padding'>
+                        <h2>Membres de l'équipe</h2>";
+                        if($me['admin'] == 1 || $me['manager'] == 1){
+                        echo "<a class='circulare-button display-flex' onclick='addmember()' class='fas fa-plus'><img src='/public/img/plus.svg'></a>";
+                        }
+                 echo "</div>
+                 <div class='divider'></div>";
             foreach ($getTeam as $usersTeam){
+                $url2 = "/users/edit/${usersTeam['UserID']}";
                 echo "
             <div class='list-user-div display-flex globale-padding'>
-                <img class='team-mate-pics' src=";if ($usersTeam['Image'] == NULL){ echo "/public/img/account.svg";} else { echo "${$usersTeam['Image']}";} echo" alt='icon profil pic' class='iconprofilpic'>
+                <img class='team-mate-pics' src='${usersTeam['Image']}' alt='icon profil pic' class='iconprofilpic'>
                 <div class='team-mate-info'>
                     <h4>${usersTeam['Lname']} ${usersTeam['Fname']}</h4>
                     <h3>${usersTeam['Pseudo']}</h3>
@@ -54,24 +57,34 @@
                     <a class='circulare-button display-flex' onclick='editUser( ${usersTeam['UserID']} )'><img src='/public/img/pencil.svg' class='fas fa-edit'></a>
                     <a class='circulare-button display-flex' href='/teams/delete/${usersTeam['UserID']}'><img src='/public/img/delete.svg' class='fas fa-ban'></a>
                </div>   
-            ";
-                $url2 = "/teams/edit/${usersTeam['UserID']}";
-                echo "
             <dialog id='edit-dialog${usersTeam['UserID']}' class='edit-dialog'>
                 <form method='post'>
-                    <label for='ad'>Joueur</label>
-                    <input type='checkbox' name='player' value='1'>
-                    <label for='ad'>Manager</label>
-                    <input type='checkbox' name='manager' value='1'>
-                    <label for='ad'>Admin</label>
-                    <input type='checkbox' name='admin' value='1'>
-                    <input type='submit' value='Valider' formaction=${url2}>
+                <select name='CharacterID'>";
+                    foreach ($getCharacters as $characters){
+                        echo "<option value='${characters['CharacterID']}'>${characters['Name']}</option>";
+                    }
+                    echo "</select>
+                    <div class='radio-dialog display-flex'>
+                        <label for='ad'>Joueur</label>
+                        <input type='checkbox' name='player' value='1'>";
+                        if($me['manager'] == 1 || $me['admin']){
+                            echo "<label for='ad'>Manager</label>
+                            <input type='checkbox' name='manager' value='1'>";}
+                        if($me['admin'] == 1){
+                            echo "<label for='ad'>Admin</label>
+                            <input type='checkbox' name='admin' value='1'>";
+                        }
+                        echo "
+                    </div>
+                    <div class='button-dialog container-dialog-button'>
+                        <input class='dialog-button' type='submit' value='Valider' formaction=${url2}>
+                        <button class='dialog-button' type='button' onclick='cancelEditUser(${usersTeam['UserID']})'>Annuler</button>
+                    </div>
                 </form>
             </dialog>
         </div>
-        <div class='divider'></div>";}
-
-        } ?>
+        <div class='divider'></div>
+        ";}}?>
     </div>
     <div class="right-block-container ">
         <h2 class="my-messages globale-padding">Mes messages</h2>
@@ -122,7 +135,7 @@
             <div class='divider'></div>
         ";}
         $url = "/backOffices/edit/${getUser['UserID']}";
-        $url2 = "/users/edit";
+        $urlForAdd = "/teams/edit";
         echo "<dialog id='ChangeInformation'>
                 <form method='post'>
                     <input type='text' name='Pseudo' value='${getUser["Pseudo"]}'>
@@ -135,42 +148,45 @@
             echo "<option value='${characters['CharacterID']}'>${characters['Name']}</option>";
         }
         echo "</select>
-                  <input type='submit' value='Valider' formaction=${url}>
-                  <button type='button' onclick='cancelChange()'>Annuler</button>
+                <div class='button-dialog container-dialog-button'>
+                  <input class='dialog-button' type='submit' value='Valider' formaction=${url}>
+                  <button class='dialog-button' type='button' onclick='cancelChange()'>Annuler</button>
+                </div>
                 </form>
             </dialog>
+            
             <dialog id='addMember'>
                 <form method='post'>
-                <select name='UsersID'>";
-        foreach ($getUsers as $users){
-            echo "<option value='${users['UserID']}'>${users['Pseudo']}</option>";
-        }
-        echo "</select>
+                    <select name='UserID'>";
+                        foreach ($getUsers as $user){
+                            echo "<option value='${user['UserID']}'>${user['Pseudo']}</option>";
+                        }
+                    echo "</select>
                     <select name='CharacterID'>";
-        foreach ($getCharacters as $characters){
-            echo "<option value='${characters['CharacterID']}'>${characters['Name']}</option>";
-        }
-        if ($getUser["Admin"] == 1){
-            echo "
-                <input type='checkbox' name='player' value='1' checked='false'>
-                <label for='Joueur'>Joueur</label>
-                <input type='checkbox' name='manager' value='1'>
-                <label for='Manager'>Manager</label>
-                <input type='checkbox' name='admin' value='1' >
-                <label for='Admin'>Admin</label>";
-
-        }
-        echo "
-                    <input type='submit' value='Valider' formaction=${url2}>
-                    <button type='button' onclick='cancelChange()'>Annuler</button>
+                        foreach ($getCharacters as $characters){
+                            echo "<option value='${characters['CharacterID']}'>${characters['Name']}</option>";
+                        }
+                    echo "</select>";
+                    if ($me["admin"] == 1){
+                            echo "<div class='radio-dialog display-flex'>
+                                    <input type='checkbox' name='player' value='1' checked='false'>
+                                    <label for='Joueur'>Joueur</label>
+                                    <input type='checkbox' name='manager' value='1'>
+                                    <label for='Manager'>Manager</label>
+                                    <input type='checkbox' name='admin' value='1' >
+                                    <label for='Admin'>Admin</label>
+                            </div>";
+                        }
+                    echo " <div class='button-dialog container-dialog-button display-flex'>
+                                <input class='dialog-button' type='submit' value='Valider' formaction=$urlForAdd>
+                                <button class='dialog-button' type='button' onclick='cancelChange()'>Annuler</button>
+                        </div>
                 </form>
             </dialog>
-            ";
-
-        ?>
+            ";?>
 </main>
 
 <?php
 $content = ob_get_clean();
-include (ROOT.'views/template.php')
+include (ROOT.'views/template.php');
 ?>

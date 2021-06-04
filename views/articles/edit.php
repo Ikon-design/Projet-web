@@ -1,11 +1,14 @@
 <?php $title = "Overwatch | Evenements"; ?>
 
 <?php ob_start(); $url = '/articles'?>
-<main>
+<main class="main-edit-article">
     <form method="post">
         <input type="text" name="title" value="<?php echo "${article['Title']}" ?>">
         <textarea name="content" ><?php echo "${article['Content']}"  ?></textarea>
-        <input type="submit" value="Valider" formaction="<?php echo "$url"?>">
+        <div class='container-dialog-button'>
+            <input class='dialog-button' type="submit" value="Valider" formaction="<?php echo "$url"?>">
+            <button class='dialog-button' formaction="<?php echo "$url"?>">Annuler</button>
+        </div>
     </form>
 </main>
 <?php $content = ob_get_clean(); ?>

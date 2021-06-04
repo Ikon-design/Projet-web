@@ -167,17 +167,15 @@ form{
     background-color: white;
     border-radius: 12px;
     padding: 25px;
-    width: fit-content;
+    width: 50%;
     height: fit-content;
 }
 form input {
     height: 43px;
     border-radius: 4px;
     border: 1px #C5C5C5 solid;
-    margin-left: 20px;
-    margin-right: 20px;
     padding-left: 15px;
-    width: 550px;
+    width: auto;
     margin-bottom: 20px;
 }
 form textarea {
@@ -605,6 +603,29 @@ Class css articles
 }
 .author-article-items{
     align-items: flex-end;
+}
+.main-edit-article{
+    width: 100vw;
+    height: calc(100vh - 56.06);
+}
+.main-edit-article form{
+    width: 100%;
+    height: 100%;
+}
+.main-edit-article input{
+    width: auto;
+}
+.main-edit-article textarea{
+     height: 74vh;
+    font-family: Raleway;
+ }
+select{
+    width: 100%;
+    height: 43px;
+    border-radius: 4px;
+    padding-left: 15px;
+    border: 1px #C5C5C5 solid;
+    margin-bottom: 20px;
 }
 @media screen and (max-width: 1300px){
      .team-mate-pics{
