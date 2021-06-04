@@ -8,7 +8,6 @@
         </div>
         <?php
         foreach ($getTeam as $usersTeam){
-            //var_dump($getTeam);
             echo "
              <div class='list-user-div team-mate display-flex globale-padding'>
                 <img class='team-mate-pics' src=";if ($usersTeam['Image'] == NULL){ echo "/public/img/account.svg";} else { echo "${$usersTeam['Image']}";} echo" alt='icon profil pic' class='iconprofilpic'>
@@ -31,14 +30,27 @@
                </div> 
             </div>
         </div>
-        <dialog id='edit-dialog${usersTeam['UserID']}' class='edit-dialog'>
+        <dialog id='addMember' class='edit-dialog'>
                 <form method='post'>
+                       <select name='UsersID'>";
+            foreach ($getUsers as $users){
+                echo "<option value='${users['UserID']}'>${users['Pseudo']}</option>";
+            }
+            echo "</select>
+                    <select name='CharacterID'>";
+            foreach ($getcharacters as $characters){
+                echo "<option value='${characters['CharacterID']}'>${characters['Name']}</option>";
+            }
+            if ($me["Admin"] == 1){
+                echo "
+                <div></div>
+                <label for='Admin'>Admin</label>
+                <input type='checkbox' name='admin' value='1' >";}
+            echo "
                     <label for='ad'>Joueur</label>
                     <input type='checkbox' name='player' value='1'>
                     <label for='ad'>Manager</label>
                     <input type='checkbox' name='manager' value='1'>
-                    <label for='ad'>Admin</label>
-                    <input type='checkbox' name='admin' value='1'>
                     <input type='submit' value='Valider' formaction=${url}>
                 </form>
             </dialog>

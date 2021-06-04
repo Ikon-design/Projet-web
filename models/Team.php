@@ -22,5 +22,18 @@ class Team extends Model{
         $query = $this->bdd->prepare($sql);
         $query->execute();
     }
-
+    public function getUsers()
+    {
+        $sql = 'SELECT Pseudo, UserID FROM users';
+        $query = $this->bdd->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function getcharacters()
+    {
+        $sql = 'SELECT Name, CharacterID FROM characters';
+        $query = $this->bdd->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

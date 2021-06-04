@@ -7,7 +7,10 @@ class Teams extends Controller {
 
         $this->loadModel("Team");
         $getTeam = $this->Team->getTeam();
-        $this->render('index', compact('getTeam'));
+        $getUsers = $this->Team->getUsers();
+        $getcharacters = $this->Team->getcharacters();
+        $me = $this->Team->me();
+        $this->render('index', compact('getTeam', 'getUsers', 'getcharacters'));
     }
 
     public function delete($id){

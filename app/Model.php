@@ -5,7 +5,7 @@ abstract class Model{
     private $host = "localhost";
     private $db_name = "cubes";
     private $username = "root";
-    private $password = "";
+    private $password = "root";
 
     protected $bdd;
 
@@ -29,6 +29,13 @@ abstract class Model{
         $query = $this->bdd->prepare($sql);
         $query->execute();
         return $query->fetchALl();
+    }
+
+    public function me(){
+        $sql = 'SELECT UserID, admin, manager FROM users WHERE UserID = '.$_SESSION['UserID'];
+        $query = $this->bdd->prepare($sql);
+        $query->execute();
+        return $query->fetch();
     }
 }
 

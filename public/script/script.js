@@ -74,13 +74,14 @@ function cancelChange()
     let dialog = document.getElementById('ChangeInformation')
     let dialog3 = document.getElementById('addArticle')
     if (dialog !== null) {
+        dialog.style.display = 'none'
         dialog.open = false
     }
     if (dialog2 !== null) {
+        dialog2.style.display = 'none'
         dialog2.open = false
     }
     if (dialog3 !== null) {
-        console.log(dialog3.open)
         dialog3.style.display = 'none'
         dialog3.open = false
     }
@@ -89,6 +90,7 @@ function cancelChange()
 
 function addmember(){
     let dialog = document.getElementById('addMember')
+    dialog.style.display = "flex"
     dialog.open = true
 }
 function addarticle(){

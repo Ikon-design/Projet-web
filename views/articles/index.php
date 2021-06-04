@@ -12,7 +12,7 @@ $url = '/articles/create';
                 <h2>Articles</h2>
                 <div class='display-flex'>
                     <a class='circulare-button display-flex' onclick='addarticle()' class='fas fa-plus'><img src='/public/img/plus.svg'></a>
-                    <img src='public/img/menu-down.svg'>
+                   
                 </div>
             </div>
             <div class='divider'></div>
@@ -30,8 +30,13 @@ $url = '/articles/create';
         echo "
             <div class='display-flex globale-margin author-article'>
                 <h3 class='article-title'>${article['Title']}</h3>
-                <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>
-            </div>
+                <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>";
+                if ($me['admin'] == 1 || $me['manager'] == 1 ) {
+                    echo "<div class='circulare-button-container display-flex' >
+                    <a class='edit-button circulare-button display-flex' href = '/articles/edit/${article["ArticleID"]}' ><img src = '/public/img/pencil.svg' ></a >
+                    <a class='delete-button circulare-button display-flex' href = '/articles/delete/${article["ArticleID"]}' ><img src = '/public/img/delete.svg' ></a >
+                </div>";}
+            echo "</div>
             <p class=''>$content</p>";
         if (strlen($article['Content']) > 200){
             echo"<a class='more globale-padding' methods='post' href='/articles/read/${article['ArticleID']}'>Lire la suite</a>";
@@ -44,7 +49,6 @@ $url = '/articles/create';
             <h2>Événements</h2> 
             <div class='display-flex'>
                 <a class='circulare-button display-flex' onclick='addarticle()' class='fas fa-plus'><img src='/public/img/plus.svg'></a>
-                <img src='public/img/menu-down.svg'>
             </div>
         </div>
         <div class='divider'></div>
@@ -60,8 +64,13 @@ $url = '/articles/create';
         echo "
             <div class='display-flex globale-margin author-article'>
                 <h3 class='article-title'>${article['Title']}</h3>
-                <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>
-            </div>
+                <h4 class='article-author'>De ${article['Pseudo']} le $formatedDate.</h4>";
+                if ($me['admin'] == 1 || $me['manager'] == 1 ) {
+                    echo "<div class='circulare-button-container display-flex' >
+                    <a class='edit-button circulare-button display-flex' href = '/articles/edit/${article["ArticleID"]}' ><img src = '/public/img/pencil.svg' ></a >
+                    <a class='delete-button circulare-button display-flex' href = '/articles/delete/${article["ArticleID"]}' ><img src = '/public/img/delete.svg' ></a >
+                </div>";}
+            echo "</div>
             <p>$content</p>";
         if (strlen($article['Content']) > 200){
             echo"<a class='more globale-padding' href='/articles/read/${article['ArticleID']}'>Lire la suite</a>";

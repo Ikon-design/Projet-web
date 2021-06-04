@@ -8,8 +8,8 @@ class Articles extends Controller {
             $formatedDate = date('d m Y', strtotime($article['Date']));
             $getEvent[$key]['Date'] = $formatedDate;
         }
-        var_dump($getEvent);
-        $this->render('index', compact('getArticle', 'getEvent'));
+        $me = $this->Article->me();
+        $this->render('index', compact('getArticle', 'getEvent', 'me'));
     }
 
     public function read($id){
@@ -40,15 +40,11 @@ class Articles extends Controller {
         if ($_POST['event'] == 'Article'){
             $evenement = 0;
             $article = 1;
-            var_dump('caca');
         }else{
-            var_dump('coucou');
             $evenement = 1;
             $article = 0;
         }
         $this->Article->createArticle($article, $evenement);
-        var_dump($_POST, $evenement, $article);
-        $this->render('create');
-        //header("Location: /articles");
+        header("Location: /articles");
     }
 }

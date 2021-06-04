@@ -34,7 +34,7 @@ class Article extends Model{
     }
 
     public function deleteArticle($id){
-        $sql = 'DELETE articles FROM articles INNER JOIN comments ON articles.ArticleID = comments.ArticleID WHERE articles.ArticleID ='.$id;
+        $sql = 'DELETE articles FROM articles LEFT JOIN comments ON articles.ArticleID = comments.ArticleID WHERE articles.ArticleID ='.$id;
         $query = $this->bdd->prepare($sql);
         $query->execute();
     }
@@ -45,7 +45,6 @@ class Article extends Model{
         $sql = "UPDATE articles SET  Title = :title, Content = :content WHERE ArticleID = :id";
         $query = $this->bdd->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $res = $query->execute(array(':title' => $title, ':content' => $content, ':id' => $id));
-        var_dump($title, $content, $res, $sql);
     }
 
     public function createArticle($article, $evenement){
@@ -55,6 +54,5 @@ class Article extends Model{
         $sql = "INSERT INTO articles (ArticleID, Content, Title, Article, Evenement, UserID, Date) VALUES ( NULL , '$content' , '$title' , $article , $evenement , $userID , NOW() )";
         $query = $this->bdd->prepare($sql);
         $res = $query->execute();
-        var_dump($sql, $query, $res, $content);
     }
 }
