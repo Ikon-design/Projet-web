@@ -19,6 +19,12 @@ class BackOffices extends Controller {
         $me = $this->BackOffice->me();
         foreach ($getArticlesUser as $key => $article){
             $getArticlesUser[$key]['lastComment'] = $this->BackOffice->getLastArticleComment($article['ArticleID']);
+            if (strlen($article['Content']) > 200){
+                $getArticlesUser[$key]['Content'] = substr($article['Content'], 0, 200)."...";
+                $getArticlesUser[$key]['oversize'] = true;
+            }else {
+                $getArticlesUser[$key]['Content'] = $article['Content'];
+            }
         }
         $this->render('index', compact('getUser', 'getArticlesUser', 'getTeam', 'getCharacters', 'getUsers', 'me'));
     }
@@ -26,6 +32,12 @@ class BackOffices extends Controller {
     public function edit($id){
         $this->loadModel("BackOffice");
         $updateUser = $this->BackOffice->edit($id);
+        header("Location: /backOffices");
+    }
+
+    public function editMe(){
+        $this->loadModel("BackOffice");
+        $this->BackOffice->editMe();
         header("Location: /backOffices");
     }
 }

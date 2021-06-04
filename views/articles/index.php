@@ -26,7 +26,7 @@ $url = '/articles/create';
                 </div>";}
            echo "</div>
            <p class=''>${article['Content']}</p>";
-           if ($article['oversize'] == true){
+           if (isset($article['oversize']) == true){
                echo"<a class='more globale-padding' href='/articles/read/${article["ArticleID"]}'>Lire la suite</a>";
            }
            echo"<div class='divider'></div>";}
@@ -54,7 +54,7 @@ $url = '/articles/create';
                 </div>";}
             echo "</div>
             <p>${article['Content']}</p>";
-            if ($article['oversize'] == true){
+            if (isset($article['oversize']) == true){
                echo"<a class='more globale-padding' href='/articles/read/${article["ArticleID"]}'>Lire la suite</a>";
            }
         echo "<div class='divider'></div>";}

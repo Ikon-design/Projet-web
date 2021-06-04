@@ -20,7 +20,7 @@ class Article extends Model{
     }
 
     public function readArticle($id){
-        $sql = 'SELECT articles.Date, articles.Title, articles.Content, users.Pseudo FROM articles JOIN users ON articles.UserID = users.UserID WHERE articles.ArticleID = '.$id;
+        $sql = 'SELECT articles.ArticleID, articles.Date, articles.Title, articles.Content, users.Pseudo FROM articles JOIN users ON articles.UserID = users.UserID WHERE articles.ArticleID = '.$id;
         $query = $this->bdd->prepare($sql);
         $query->execute();
         return $query->fetch();
@@ -42,9 +42,10 @@ class Article extends Model{
     public function editArticles($id){
         $content = htmlspecialchars($_POST["content"], ENT_QUOTES);
         $title = htmlspecialchars($_POST["title"], ENT_QUOTES);
-        $sql = "UPDATE articles SET  Title = :title, Content = :content WHERE ArticleID = :id";
-        $query = $this->bdd->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $res = $query->execute(array(':title' => $title, ':content' => $content, ':id' => $id));
+        $sql = "UPDATE articles SET  Title = '$title', Content = '$content' WHERE ArticleID = '$id'";
+        $query = $this->bdd->prepare($sql);
+        $res = $query->execute();
+        var_dump($res);
     }
 
     public function createArticle($article, $evenement){

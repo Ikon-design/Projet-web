@@ -6,7 +6,7 @@ class Articles extends Controller {
         $getEvent = $this->Article->getEvent();
 
         foreach ($getArticle as $key => $article) {
-            $formatedDate = date('d m Y', strtotime($article['Date']));
+            $formatedDate = date('d/m/Y', strtotime($article['Date']));
             $getArticle[$key]['Date'] = $formatedDate;
 
             if (strlen($article['Content']) > 200){
@@ -16,7 +16,7 @@ class Articles extends Controller {
         }
 
         foreach ($getEvent as $key => $article) {
-            $formatedDate = date('d m Y', strtotime($article['Date']));
+            $formatedDate = date('d/m/Y', strtotime($article['Date']));
             $getEvent[$key]['Date'] = $formatedDate;
 
             if (strlen($article['Content']) > 200){
@@ -48,6 +48,7 @@ class Articles extends Controller {
         if ( count($_POST) > 0) {
             $this->Article->editArticles($id);
             $article = $this->Article->readArticle($id);
+            header("Location: /articles");
         }
         $this->render('edit', compact('article'));
     }

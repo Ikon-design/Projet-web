@@ -1,6 +1,6 @@
 <?php $title = "Page de profil" ?>
 
-<?php ob_start(); var_dump($me);?>
+<?php ob_start();?>
 <main class="main-backoffice display-flex">
     <div class="left-block-container">
         <div class="display-flex flex-direction-column globale-padding">
@@ -95,13 +95,6 @@
             $formatedDate = date('d/m/Y', strtotime($date));
             $lastComment = $articles['lastComment'];
 
-            if (strlen($articles['Content']) > 200){
-                $content = substr($articles['Content'], 0, 200)."...";
-                $endPoint = strrpos($content, ' ');
-            }else {
-                $content = $articles['Content'];
-            }
-
             echo"
             <div class='post display-flex flex-direction-column globale-padding'>
             <div class='display-flex author-article'>
@@ -109,15 +102,14 @@
                 <h3 class='article-title'>${articles["Title"]}</h3>
                 <h4 class='article-author'>De ${articles["Pseudo"]}, le $formatedDate</h4>
             </div>
-
                 <div class='circulare-button-container display-flex'>
                     <a class='edit-button circulare-button display-flex' href='/articles/edit/${articles["ArticleID"]}'><img src='/public/img/pencil.svg'></a>
                     <a class='delete-button circulare-button display-flex' href='/articles/delete/${articles["ArticleID"]}'><img src='/public/img/delete.svg'></a>
                 </div>
             </div>
             <div class='post-date'>
-            <p>$content</p>";
-            if (strlen($articles['Content']) > 200){
+            <p>${articles['Content']}</p>";
+            if (isset($articles['oversize']) == true){
                 echo"<a class='more' href='/articles/read/${articles["ArticleID"]}'>Lire la suite</a>";
             }
             if ($lastComment['Pseudo'] == null) {
@@ -134,7 +126,7 @@
             </div>
             <div class='divider'></div>
         ";}
-        $url = "/backOffices/edit/${getUser['UserID']}";
+        $url = "/backOffices/editMe";
         $urlForAdd = "/teams/edit";
         echo "<dialog id='ChangeInformation'>
                 <form method='post'>

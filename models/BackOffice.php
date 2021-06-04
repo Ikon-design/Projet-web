@@ -65,4 +65,16 @@ class BackOffice extends Model{
         $res = $query->fetch();
         return $res;
     }
+    public function editMe(){
+        $pseudo = $_POST['Pseudo'];
+        $fname = $_POST['Fname'];
+        $lname = $_POST['Lname'];
+        $mail = $_POST['Mail'];
+        $characterId = $_POST['CharacterID'];
+        $sql = "UPDATE users SET Pseudo = '$pseudo', Fname = '$fname', Lname = '$lname', Mail = '$mail', CharacterID = $characterId WHERE UserID = ".$_SESSION['UserID'];
+        $query = $this->bdd->prepare($sql);
+        $query->execute();
+        $res = $query->fetch();
+        return $res;
+    }
 }
