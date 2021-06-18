@@ -92,7 +92,6 @@ body{
     color: white;
     font-weight: 700;
     padding: 6px 10px;
-    background-image: url("");
     background: #10CB50;
     width: fit-content;
     white-space: normal;
@@ -290,19 +289,21 @@ class home
 .right-news{
     height: 50%;
     width: 100%;
-    background: #000000 url("/public/img/new-home.jpeg");
+    background: #000000 url("/public/img/OVR_Ashe_009_png_jpgcopy_1541538953123.webp");
     justify-content: flex-end;
     padding-left: 40px;
     padding-bottom: 20px;
+    background-size: cover;
 }
 
 .right-news1{
     height: 50%;
     width: 100%;
-    background: #000000 url("/public/img/new-home.jpeg");
+    background: #000000 url("/public/img/Overwatch-Launch-14.jpeg");
     justify-content: flex-end;
     padding-left: 40px;
     padding-bottom: 20px;
+    background-size: cover;
 }
 .aboutt{
     flex-direction: row;
@@ -686,6 +687,7 @@ select{
     height: calc( 100vh - 56.06px);
     background-size: cover;
     background-image: url('/public/img/bg.jpeg');
+    overflow: hidden;
 }
 .characters-content{
     height: 100%;
@@ -724,6 +726,7 @@ video{
     border: none;
 }
 .p-skill{
+    width: 100%;
     z-index: 5;
 }
 .skill-icon{

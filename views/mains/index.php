@@ -19,15 +19,23 @@
             <?php echo "<h3 class='news-articles'>${llastArticle['Title']}</h3>
             <div class='content-news-articles-right'>
             <div class='line'></div>
-            <p class='left-news-article'>${llastArticle['Content']}</p>
-            </div>"?>
+            <p class='left-news-article'>${llastArticle['Content']}</p>";
+              if (isset($llastArticle['oversize']) == true ){
+                echo "<a class='more' href='/articles/read/${llastArticle['ArticleID']}'>Lire la suite</a>";
+            }
+            ?>
+            </div>
         </div>
         <div class="right-news1 display-flex flex-direction-column">
             <?php echo "<h3 class='news-articles'>${lllastArticle['Title']}</h3>
             <div class='content-news-articles-right'>
             <div class='line'></div>
-            <p class='left-news-article'>${lllastArticle['Content']}</p>
-            </div>"?>
+            <p class='left-news-article'>${lllastArticle['Content']}</p>";
+              if (isset($lllastArticle['oversize']) == true ){
+                echo "<a class='more' href='/articles/read/${lllastArticle['ArticleID']}'>Lire la suite</a>";
+            }
+            ?>
+            </div>
         </div>
     </div>
     </div>

@@ -1,69 +1,62 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : mer. 19 mai 2021 à 11:11
--- Version du serveur :  10.4.18-MariaDB
--- Version de PHP : 8.0.3
+-- Host: localhost:3306
+-- Generation Time: Jun 18, 2021 at 08:25 AM
+-- Server version: 5.7.32
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de données : `cubes`
+-- Database: `cubes`
 --
-CREATE DATABASE IF NOT EXISTS `cubes` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `cubes`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `articles`
+-- Table structure for table `articles`
 --
 
 CREATE TABLE `articles` (
-  `ArticleID` int(11) NOT NULL,
-  `Date` date NOT NULL,
-  `Title` varchar(254) NOT NULL,
-  `Article` tinyint(1) NOT NULL,
-  `Evenement` tinyint(1) NOT NULL,
-  `UserID` int(11) NOT NULL,
-  `Content` text NOT NULL
+                            `ArticleID` int(11) NOT NULL,
+                            `Date` date NOT NULL,
+                            `Title` varchar(254) NOT NULL,
+                            `Article` tinyint(1) NOT NULL,
+                            `Evenement` tinyint(1) NOT NULL,
+                            `UserID` int(11) NOT NULL,
+                            `Content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `articles`
+-- Dumping data for table `articles`
 --
 
 INSERT INTO `articles` (`ArticleID`, `Date`, `Title`, `Article`, `Evenement`, `UserID`, `Content`) VALUES
-(8, '2021-05-20', 'Bienvenue sur le site ! ', 0, 1, 11, 'Le site di20'),
-(9, '2021-05-21', 'Je suis le manager ', 1, 0, 10, 'Manager de l\'équipe overwatch');
+(8, '2021-05-20', 'Bienvenue sur le site ! ', 0, 1, 8, 'Le On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L\'avantage du Lorem Ipsum sur un texte générique comme \'Du texte. Du texte. Du texte.\' est qu\'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour \'Lorem Ipsum\' vous conduira vers de nombreux sites qui n\'en sont encore qu\'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d\'y rajouter de petits clins d\'oeil, voire des phrases embarassantes). di20'),
+(9, '2021-05-21', 'Je suis le nouvel article', 1, 0, 8, 'Contrairement à une opinion répandue, le Lorem Ipsum n&#039;est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s&#039;est intéressé à un des mots latins les plus obscurs, consectetur, extrait d&#039;un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du &quot;De Finibus Bonorum et Malorum&quot; (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l&#039;éthique. Les premières lignes du Lorem Ipsum, &quot;Lorem ipsum dolor sit amet...&quot;, proviennent de la section 1.10.32.'),
+(10, '2021-05-03', 'Je suis le nouvel article', 1, 0, 8, 'On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L\'avantage du Lorem Ipsum sur un texte générique comme \'Du texte. Du texte. Du texte.\' est qu\'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour \'Lorem Ipsum\' vous conduira vers de nombreux sites qui n\'en sont encore qu\'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d\'y rajouter de petits clins d\'oeil, voire des phrases embarassantes).'),
+(12, '2021-06-14', 'COucou je suis le nouveau', 0, 1, 8, 'Coucou');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `characters`
+-- Table structure for table `characters`
 --
 
 CREATE TABLE `characters` (
-  `CharacterID` int(11) NOT NULL,
-  `Name` varchar(25) NOT NULL,
-  `Icon` text NOT NULL,
-  `Img` text NOT NULL,
-  `Description` text NOT NULL,
-  `ClassID` int(10) NOT NULL
+                              `CharacterID` int(11) NOT NULL,
+                              `Name` varchar(25) NOT NULL,
+                              `Icon` text NOT NULL,
+                              `Img` text NOT NULL,
+                              `Description` text NOT NULL,
+                              `ClassID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `characters`
+-- Dumping data for table `characters`
 --
 
 INSERT INTO `characters` (`CharacterID`, `Name`, `Icon`, `Img`, `Description`, `ClassID`) VALUES
@@ -103,16 +96,16 @@ INSERT INTO `characters` (`CharacterID`, `Name`, `Icon`, `Img`, `Description`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `class`
+-- Table structure for table `class`
 --
 
 CREATE TABLE `class` (
-  `ClassID` int(11) NOT NULL,
-  `Type` varchar(10) NOT NULL
+                         `ClassID` int(11) NOT NULL,
+                         `Type` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `class`
+-- Dumping data for table `class`
 --
 
 INSERT INTO `class` (`ClassID`, `Type`) VALUES
@@ -123,48 +116,50 @@ INSERT INTO `class` (`ClassID`, `Type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comments`
+-- Table structure for table `comments`
 --
 
 CREATE TABLE `comments` (
-  `CommentID` int(11) NOT NULL,
-  `ArticleID` int(11) NOT NULL,
-  `Date` date NOT NULL,
-  `UserID` int(11) NOT NULL,
-  `Content` text NOT NULL
+                            `CommentID` int(11) NOT NULL,
+                            `ArticleID` int(11) NOT NULL,
+                            `Date` date NOT NULL,
+                            `UserID` int(11) NOT NULL,
+                            `Content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `comments`
+-- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`CommentID`, `ArticleID`, `Date`, `UserID`, `Content`) VALUES
-(3, 9, '2021-05-22', 8, 'Coach nous bien senpai Anwww~~');
+(3, 9, '2021-05-22', 8, 'Coach nous bien senpai Anwww~~'),
+(4, 9, '2021-05-12', 9, 'Coucou je suis le Kikou antoine'),
+(5, 8, '2021-05-11', 8, 'azeazeazeaeazeae');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `skills`
+-- Table structure for table `skills`
 --
 
 CREATE TABLE `skills` (
-  `SkillID` int(11) NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `Description` text NOT NULL,
-  `Icon` text NOT NULL,
-  `Video` text NOT NULL,
-  `CharacterID` int(11) NOT NULL
+                          `SkillID` int(11) NOT NULL,
+                          `Name` varchar(50) NOT NULL,
+                          `Description` text NOT NULL,
+                          `Icon` text NOT NULL,
+                          `Video` text NOT NULL,
+                          `CharacterID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `skills`
+-- Dumping data for table `skills`
 --
 
 INSERT INTO `skills` (`SkillID`, `Name`, `Description`, `Icon`, `Video`, `CharacterID`) VALUES
 (2, 'ORBE DE DESTRUCTION', 'Zenyatta lance ses orbes d’énergie destructrice soit individuellement, soit en rafale après avoir passé quelques secondes à rassembler de l’énergie.', 'https://d15f34w2p8l1cc.cloudfront.net/overwatch/5740abd7e5f0de513ebcb32b073f27ba8f5625804598d5762cefd0c7331c1437.png', 'https://d1u1mce87gyfbn.cloudfront.net/hero/zenyatta/ability-orb-of-destruction/video-ability.mp4', 32),
 (3, 'ORBE D\'HARMONIE', 'Zenyatta lance un orbe au-dessus d’un allié ciblé. Tant que Zenyatta reste en vie, l’orbe restaure lentement les points de vie de cet allié. Ne peut être utilisé que sur un allié à la fois.', 'https://d15f34w2p8l1cc.cloudfront.net/overwatch/999f5d34dd3c8dfb045bc69129d1b6aac547b98e252b68f2599b878d15d841cb.png', 'https://d1u1mce87gyfbn.cloudfront.net/hero/zenyatta/ability-orb-of-harmony/video-ability.mp4', 32),
 (4, 'ORBE DE DISCORDE', 'Lancer un orbe de discorde sur un ennemi amplifie la quantité de dégâts que celui-ci reçoit tant que Zenyatta est en vie. Ne peut être utilisé que sur un adversaire à la fois.', 'https://d15f34w2p8l1cc.cloudfront.net/overwatch/f416ae3c602c4f920551057176a3618441f943a0faea5e3cf77dc5db0e5128a5.png', 'https://d1u1mce87gyfbn.cloudfront.net/hero/zenyatta/ability-orb-of-discord/video-ability.mp4', 32),
-(5, 'TRANSCENDANCE', 'Zenyatta parvient à accéder à un stade d’existence supérieur pendant un court moment. Tant qu’il se transcende, Zenyatta ne peut pas utiliser ses capacités ou ses armes, mais il est immunisé aux dégâts et restaure automatiquement ses points de vie et ceux des alliés proches.', '6ac5d4f08023cafc9f5412e45141cddecfdb2cb43ecf8415c12d1d161cce4678.png', 'https://d1u1mce87gyfbn.cloudfront.net/hero/zenyatta/ability-transcendence/video-ability.mp4', 32),
+(5, 'TRANSCENDANCE', 'Zenyatta parvient à accéder à un stade d’existence supérieur pendant un court moment. Tant qu’il se transcende, Zenyatta ne peut pas utiliser ses capacités ou ses armes, mais il est immunisé aux dégâts et restaure automatiquement ses points de vie et ceux des alliés proches.', 'https://d15f34w2p8l1cc.cloudfront.net/overwatch/6ac5d4f08023cafc9f5412e45141cddecfdb2cb43ecf8415c12d1d161cce4678.png', 'https://d1u1mce87gyfbn.cloudfront.net/hero/zenyatta/ability-transcendence/video-ability.mp4', 32),
 (6, 'FUSIL BIOTIQUE', 'Le fusil d’Ana projette des fléchettes qui régénèrent les points de vie de ses alliés ou infligent des dégâts continus à ses ennemis. La lunette de son fusil lui permet de zoomer sur ses cibles pour des tirs d’une extrême précision.', 'https://d15f34w2p8l1cc.cloudfront.net/overwatch/efe0ebb135e87dc26b60f0d20500dcd7553ad121ab2b10cd4ffb5db17be9c977.png', 'https://d1u1mce87gyfbn.cloudfront.net/hero/ana/ability-biotic-rifle/video-ability.mp4', 1),
 (7, 'FLÉCHETTE HYPODERMIQUE', 'Ana tire une fléchette avec son arme de poing, provoquant l’évanouissement d’un ennemi (qui se réveille s’il subit des dégâts).', 'https://d15f34w2p8l1cc.cloudfront.net/overwatch/20707fd82265412fdc6d2353daa88ec7558cd71c89aa3ac6cf0e78bbbfcabd80.png', 'https://d1u1mce87gyfbn.cloudfront.net/hero/ana/ability-sleep-dart/video-ability.mp4', 1),
 (8, 'GRENADE BIOTIQUE', 'Ana lance une bombe biotique qui inflige des dégâts aux ennemis et soigne les alliés dans une zone de taille réduite. Pendant un court moment, les alliés affectés reçoivent plus de soins de toutes les sources, tandis que les ennemis pris dans l’explosion ne peuvent temporairement plus être soignés.', 'https://d15f34w2p8l1cc.cloudfront.net/overwatch/c8190b234bf0a0e28eecffe162d0c942e6b8656e95f4688c6ca3b025fa5a487d.png', 'https://d1u1mce87gyfbn.cloudfront.net/hero/ana/ability-biotic-grenade/video-ability.mp4', 1),
@@ -183,154 +178,152 @@ INSERT INTO `skills` (`SkillID`, `Name`, `Description`, `Icon`, `Video`, `Charac
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `UserID` int(11) NOT NULL,
-  `Pseudo` varchar(25) NOT NULL,
-  `Fname` varchar(25) NOT NULL,
-  `Lname` varchar(25) NOT NULL,
-  `Mail` varchar(100) NOT NULL,
-  `Password` text NOT NULL,
-  `CharacterID` int(11) DEFAULT NULL,
-  `Player` tinyint(1) NOT NULL,
-  `Admin` tinyint(1) NOT NULL,
-  `Manager` tinyint(1) NOT NULL
+                         `UserID` int(11) NOT NULL,
+                         `Pseudo` varchar(25) NOT NULL,
+                         `Fname` varchar(25) NOT NULL,
+                         `Lname` varchar(25) NOT NULL,
+                         `Mail` varchar(100) NOT NULL,
+                         `Password` text NOT NULL,
+                         `CharacterID` int(11) DEFAULT NULL,
+                         `Player` tinyint(1) NOT NULL,
+                         `Admin` tinyint(1) NOT NULL,
+                         `Manager` tinyint(1) NOT NULL,
+                         `Image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `Pseudo`, `Fname`, `Lname`, `Mail`, `Password`, `CharacterID`, `Player`, `Admin`, `Manager`) VALUES
-(8, 'Kik0uDu13', 'Timothé', 'DUPOND', 'timothé.dupond@gmail.com', '$2y$10$BHX63G.yWt4y7mhkb0.1EefbuMcVnWzs5QGfa2dq4wwJ5dKNhQvVG', NULL, 1, 0, 0),
-(9, 'Kik0uDu14', 'Timothéo', 'DUPONDO', 'timothéo.dupondo@gmail.com', '$2y$10$BHX63G.yWt4y7mhkb0.1EefbuMcVnWzs5QGfa2dq4wwJ5dKNhQvVG', NULL, 1, 0, 0),
-(10, 'BigManager', 'Alexandre', 'LEMOYEN', 'BigManager.LEMOYEN@gmail.com', '$2y$10$BHX63G.yWt4y7mhkb0.1EefbuMcVnWzs5QGfa2dq4wwJ5dKNhQvVG', NULL, 0, 0, 1),
-(11, 'Mao', 'Maori', 'VAHANA', 'Maori.Vahana@gmail.com', '$2y$10$BHX63G.yWt4y7mhkb0.1EefbuMcVnWzs5QGfa2dq4wwJ5dKNhQvVG', NULL, 0, 1, 0);
+INSERT INTO `users` (`UserID`, `Pseudo`, `Fname`, `Lname`, `Mail`, `Password`, `CharacterID`, `Player`, `Admin`, `Manager`, `Image`) VALUES
+(8, 'Kirosath', 'Clément', 'Legrix', 'legrix.clement@gmail.com', '$2y$10$jwcf6HDd2cnGYM5KNnLtXeEQ4XpScI8luQutiQC2bVyxI.yzSZJ3y', 23, 1, 1, 1, NULL),
+(9, 'Kik0uDu14', 'Timothéo', 'DUPONDO', 'timothéo.dupondo@gmail.com', '$2y$10$BHX63G.yWt4y7mhkb0.1EefbuMcVnWzs5QGfa2dq4wwJ5dKNhQvVG', 6, 1, 1, 0, NULL),
+(10, 'BigManager', 'Alexandre', 'LEMOYEN', 'BigManager.LEMOYEN@gmail.com', '$2y$10$BHX63G.yWt4y7mhkb0.1EefbuMcVnWzs5QGfa2dq4wwJ5dKNhQvVG', 5, 1, 0, 0, NULL),
+(11, 'Maoazza', 'Maori', 'VAHANAzaz', 'Maori.Vahana@gmail.com', '$2y$10$BHX63G.yWt4y7mhkb0.1EefbuMcVnWzs5QGfa2dq4wwJ5dKNhQvVG', 11, 1, 1, 0, NULL),
+(12, 'Wharguna', 'reifoa', 'zeifl', 'coucou@gmail.com', '$2y$10$BHX63G.yWt4y7mhkb0.1EefbuMcVnWzs5QGfa2dq4wwJ5dKNhQvVG', 2, 1, 1, 0, NULL),
+(13, 'Bobo', 'Albert', 'fonela', 'Lorem.ispum@gmail.com', '$2y$10$BHX63G.yWt4y7mhkb0.1EefbuMcVnWzs5QGfa2dq4wwJ5dKNhQvVG', 32, 1, 1, 0, NULL);
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `articles`
+-- Indexes for table `articles`
 --
 ALTER TABLE `articles`
-  ADD PRIMARY KEY (`ArticleID`),
-  ADD KEY `UserID` (`UserID`);
+    ADD PRIMARY KEY (`ArticleID`),
+    ADD KEY `UserID` (`UserID`);
 
 --
--- Index pour la table `characters`
+-- Indexes for table `characters`
 --
 ALTER TABLE `characters`
-  ADD PRIMARY KEY (`CharacterID`),
-  ADD KEY `ClassID` (`ClassID`);
+    ADD PRIMARY KEY (`CharacterID`),
+    ADD KEY `ClassID` (`ClassID`);
 
 --
--- Index pour la table `class`
+-- Indexes for table `class`
 --
 ALTER TABLE `class`
-  ADD PRIMARY KEY (`ClassID`);
+    ADD PRIMARY KEY (`ClassID`);
 
 --
--- Index pour la table `comments`
+-- Indexes for table `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`CommentID`),
-  ADD KEY `UserID` (`UserID`),
-  ADD KEY `ArticleID` (`ArticleID`);
+    ADD PRIMARY KEY (`CommentID`),
+    ADD KEY `UserID` (`UserID`),
+    ADD KEY `ArticleID` (`ArticleID`);
 
 --
--- Index pour la table `skills`
+-- Indexes for table `skills`
 --
 ALTER TABLE `skills`
-  ADD PRIMARY KEY (`SkillID`),
-  ADD KEY `CharacterID` (`CharacterID`);
+    ADD PRIMARY KEY (`SkillID`),
+    ADD KEY `CharacterID` (`CharacterID`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserID`),
-  ADD KEY `CharacterID` (`CharacterID`);
+    ADD PRIMARY KEY (`UserID`),
+    ADD KEY `CharacterID` (`CharacterID`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `articles`
+-- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `ArticleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+    MODIFY `ArticleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT pour la table `characters`
+-- AUTO_INCREMENT for table `characters`
 --
 ALTER TABLE `characters`
-  MODIFY `CharacterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+    MODIFY `CharacterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT pour la table `class`
+-- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `ClassID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `ClassID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `comments`
+-- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `CommentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `CommentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT pour la table `skills`
+-- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `SkillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+    MODIFY `SkillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+    MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `articles`
+-- Constraints for table `articles`
 --
 ALTER TABLE `articles`
-  ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
+    ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
 
 --
--- Contraintes pour la table `characters`
+-- Constraints for table `characters`
 --
 ALTER TABLE `characters`
-  ADD CONSTRAINT `characters_ibfk_1` FOREIGN KEY (`ClassID`) REFERENCES `class` (`ClassID`);
+    ADD CONSTRAINT `characters_ibfk_1` FOREIGN KEY (`ClassID`) REFERENCES `class` (`ClassID`);
 
 --
--- Contraintes pour la table `comments`
+-- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`ArticleID`) REFERENCES `articles` (`ArticleID`);
+    ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`),
+    ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`ArticleID`) REFERENCES `articles` (`ArticleID`);
 
 --
--- Contraintes pour la table `skills`
+-- Constraints for table `skills`
 --
 ALTER TABLE `skills`
-  ADD CONSTRAINT `skills_ibfk_1` FOREIGN KEY (`CharacterID`) REFERENCES `characters` (`CharacterID`);
+    ADD CONSTRAINT `skills_ibfk_1` FOREIGN KEY (`CharacterID`) REFERENCES `characters` (`CharacterID`);
 
 --
--- Contraintes pour la table `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`CharacterID`) REFERENCES `characters` (`CharacterID`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+    ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`CharacterID`) REFERENCES `characters` (`CharacterID`);
