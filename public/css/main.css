@@ -6,6 +6,17 @@ Class css globales
 .display-flex{
     display: flex;
 }
+.center{
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+}
+.main-login{
+    width: 100vw;
+    height: calc(100vh - 56.06px);
+    background-color: white;
+    justify-content: center;
+}
 .mobile-padding{
     padding: 0 36px;
 }
@@ -21,6 +32,13 @@ h2{
     text-overflow: ellipsis;
     font-family: Montserrat;
     font-size: 1.5rem;
+
+}
+.login-title{
+    font-family: Montserrat;
+    color: #FF8900;
+    font-weight: 600;
+    text-transform: uppercase;
 
 }
 h3{
@@ -71,6 +89,7 @@ body{
     font-weight: 600;
     text-transform: uppercase;
     color: #FF8900;
+    background-color: white;
 }
 :hover.button{
     background-color: rgba(255, 137, 0, 0.05);
@@ -804,5 +823,8 @@ video{
     .container-character-info{
         width: 100%;
     }
-
+    .backoffice-container-button{
+        display: flex;
+        align-self: center;
+    }
 }

@@ -23,7 +23,10 @@
                 "?>
             </div>
         </div>
-        <a class="button" onclick='ChangeInformation()'>Modifier</a>
+            <div class="display-flex backoffice-container-button">
+                <a class="button globale-margin" onclick='ChangeInformation()'>Modifier</a>
+                <a class="button" href="/disconnects">Déconnexion</a>
+            </div>
         </div>
         <div class="divider"></div>
         <?php if($getUser['Admin'] == 1 || $getUser['Player'] == 1 || $getUser['Player'] == 1){
@@ -52,11 +55,16 @@
                         <h6 class='${usersTeam['Type']}'>${usersTeam['Type']}</h6>
                     </div>
                    
-                </div>
-                <div class='edit-delete display-flex'>
+                </div>";?>
+                    <?php
+                if($me['admin'] == 1 || $me['manager'] == 1){
+                echo "<div class='edit-delete display-flex'>
                     <a class='circulare-button display-flex' onclick='editUser( ${usersTeam['UserID']} )'><img src='/public/img/pencil.svg' class='fas fa-edit'></a>
                     <a class='circulare-button display-flex' href='/teams/delete/${usersTeam['UserID']}'><img src='/public/img/delete.svg' class='fas fa-ban'></a>
-               </div>   
+               </div>";
+               }   ?>
+                <?php
+                echo "
             <dialog id='edit-dialog${usersTeam['UserID']}' class='edit-dialog'>
                 <form method='post'>
                 <select name='CharacterID'>";
